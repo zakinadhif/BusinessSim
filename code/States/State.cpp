@@ -3,6 +3,6 @@
 #include "States/State.hpp"
 #include "Game.hpp"
 
-State::State(Game& game, const char* name)
-  : m_game(game), m_name(name)
+State::State(Game& game)
+  : m_game(game)
 {}

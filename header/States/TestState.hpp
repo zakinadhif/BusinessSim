@@ -1,16 +1,23 @@
-#pragma once
+#ifndef TESTSTATE_H
+#define TESTSTATE_H
 
 #include "States/State.hpp"
+#include "Game.hpp"
+
+#include <SFML/Graphics.hpp>
 
 class TestState : public State
 {
-  TestState(Game& game, const char* name);
+public:
+  TestState(Game& game);
 
-  void draw(sf::RenderTarget& renderTarget) {}
-  void update(sf::Time elapsed) {}
-  void fixedUpdate(sf::Time elapsed) {}
-  void onOpen() {}
+  void draw(sf::RenderTarget& renderTarget);
+  void update(sf::Time elapsed);
+  void fixedUpdate(sf::Time elapsed);
+  void onOpen();
 
-  void handleEvent(sf::Event event) {}
-  void handleInput() {}
+  void handleEvent(sf::Event event);
+  void handleInput();
 };
+
+#endif

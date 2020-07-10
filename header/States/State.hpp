@@ -1,16 +1,17 @@
 #ifndef STATE_H
 #define STATE_H
 
+#include "Game.hpp"
+
 #include <TGUI/TGUI.hpp>
 #include <SFML/Graphics.hpp>
-#include "Game.hpp"
 
 class Game;
 
 class State
 {
 public:
-  State(Game& game, const char* name);
+  State(Game& game);
 
   virtual void draw(sf::RenderTarget& renderTarget) = 0;
   virtual void update(sf::Time elapsed) {}
@@ -23,7 +24,6 @@ public:
   virtual ~State() = default;
 protected:
   Game& m_game;
-  std::string m_name;
 };
 
 #endif

@@ -1,11 +1,11 @@
 #include "Game.hpp"
 
-#include <SFML/Graphics.hpp>
+#include "States/State.hpp"
 
 #include <iostream>
 #include <memory>
+#include <SFML/Graphics.hpp>
 
-#include "States/State.hpp"
 
 Game::Game()
 {

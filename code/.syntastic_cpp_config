@@ -1,0 +1,5 @@
+-I../header
+-I../header/External/imgui
+-I../header/External/imgui-sfml
+-I../header/External/box2d
+-std=c++17

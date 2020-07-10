@@ -1,10 +1,11 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "States/State.hpp"
+
 #include <SFML/Graphics.hpp>
 #include <stack>
 #include <memory>
-#include "States/State.hpp"
 
 class State;
 

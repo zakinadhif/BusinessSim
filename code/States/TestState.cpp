@@ -1,7 +1,9 @@
 #include "States/TestState.hpp"
 
-TestState::TestState(Game& game, const char* name) 
-    : State(game, name)
+#include "Game.hpp"
+
+TestState::TestState(Game& game) 
+    : State(game)
 {}
 
 void TestState::draw(sf::RenderTarget& renderTarget) {}

@@ -35,6 +35,7 @@ _SRC      := main.cpp \
 	Game.cpp \
 	$(call at-source-wildcard,External/*/*.cpp) \
 	$(call at-source-wildcard,Component/*.cpp) \
+	$(call at-source-wildcard,States/*.cpp)
 
 # Executable Name
 EXE_NAME := GameSystem
