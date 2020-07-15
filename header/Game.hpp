@@ -4,6 +4,7 @@
 #include "States/State.hpp"
 
 #include <SFML/Graphics.hpp>
+#include <TGUI/TGUI.hpp>
 #include <stack>
 #include <memory>
 
@@ -29,9 +30,12 @@ public:
   void handleInput();
 
   sf::RenderWindow& getRenderWindow();
+	tgui::Gui& getGui();
 private:
   void routine();
 
+	sf::Font defaultFont;
+	tgui::Gui m_gui;
   sf::RenderWindow m_window;
   std::stack<std::unique_ptr<State>> m_states;
 };

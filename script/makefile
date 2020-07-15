@@ -30,7 +30,7 @@ BUILD_DIR            := build
 BINARY_DIR           := bin
 
 # Dependencies, Objects, Libraries required to build the code
-_LIBS     := sfml-graphics sfml-window sfml-system X11 GL GLU glut box2d
+_LIBS     := tgui sfml-graphics sfml-window sfml-system GL GLU glut box2d
 _SRC      := main.cpp \
 	Game.cpp \
 	$(call at-source-wildcard,External/*/*.cpp) \

@@ -12,13 +12,21 @@ Game::Game()
   sf::ContextSettings contextSettings;
   contextSettings.antialiasingLevel = 2;
   m_window.create(
-    sf::VideoMode(1280u,800u)
+    sf::VideoMode(1366u,768u)
     , "Delivere"
     , sf::Style::Fullscreen
     , contextSettings
   );
 
   m_window.setFramerateLimit(60);
+
+	if (!defaultFont.loadFromFile("assets/Arial.ttf"))
+	{
+		std::cout << "Fail to load default font" << std::endl;
+	}
+
+	m_gui.setTarget(m_window);
+	m_gui.setFont(defaultFont);
 }
 
 void Game::routine()
@@ -39,18 +47,21 @@ void Game::routine()
     lag += elapsed;
 
     handleInput();
-    activeState.update(elapsed);
-    handleEvent();
+		handleEvent();
 
-    if (lag >= timePerUpdate)
-    {
-      ticks++;
-      lag -= timePerUpdate;
-      peekState()->fixedUpdate(elapsed);
-    }
+		if (lag >= timePerUpdate)
+		{
+			ticks++;
+			lag -= timePerUpdate;
+			peekState()->fixedUpdate(elapsed);
+		}
+    
+		activeState.update(elapsed);
+		activeState.lateUpdate(elapsed);
 
     m_window.clear();
     activeState.draw(m_window);
+		m_gui.draw();
     m_window.display();
   }
 }
@@ -83,6 +94,9 @@ void Game::handleEvent()
 
   while(m_window.pollEvent(event))
   {
+		m_gui.handleEvent(event);
+		peekState()->handleEvent(event);
+
     if (event.type == sf::Event::Closed)
       m_window.close();
     if (event.type == sf::Event::Resized)
@@ -91,8 +105,6 @@ void Game::handleEvent()
         sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
         m_window.setView(sf::View(visibleArea));
     }
-
-    peekState()->handleEvent(event);
   }
 }
 
@@ -104,4 +116,9 @@ void Game::handleInput()
 sf::RenderWindow& Game::getRenderWindow()
 {
   return m_window;
+}
+
+tgui::Gui& Game::getGui()
+{
+	return m_gui;
 }

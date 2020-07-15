@@ -18,6 +18,10 @@ public:
 
   void handleEvent(sf::Event event);
   void handleInput();
+
+	~TestState();
+private:
+	tgui::Group::Ptr thisGroup;
 };
 
 #endif

@@ -1,1 +1,2 @@
-make -C ../ -f script/makefile $*
+cd ..
+bear --append make -f script/makefile $*

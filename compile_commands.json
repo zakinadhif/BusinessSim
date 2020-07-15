@@ -1,0 +1,202 @@
+[
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I",
+            "header",
+            "-I",
+            "header/External/imgui",
+            "-I",
+            "header/External/imgui-sfml",
+            "-I",
+            "header/External/box2d",
+            "-Wall",
+            "-o",
+            "build/States/TestState.o",
+            "code/States/TestState.cpp"
+        ],
+        "directory": "/home/xni/Workspace/C++/GameSystems",
+        "file": "code/States/TestState.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I",
+            "header",
+            "-I",
+            "header/External/imgui",
+            "-I",
+            "header/External/imgui-sfml",
+            "-I",
+            "header/External/box2d",
+            "-Wall",
+            "-o",
+            "build/main.o",
+            "code/main.cpp"
+        ],
+        "directory": "/home/xni/Workspace/C++/GameSystems",
+        "file": "code/main.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I",
+            "header",
+            "-I",
+            "header/External/imgui",
+            "-I",
+            "header/External/imgui-sfml",
+            "-I",
+            "header/External/box2d",
+            "-Wall",
+            "-o",
+            "build/External/imgui/imgui_draw.o",
+            "code/External/imgui/imgui_draw.cpp"
+        ],
+        "directory": "/home/xni/Workspace/C++/GameSystems",
+        "file": "code/External/imgui/imgui_draw.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I",
+            "header",
+            "-I",
+            "header/External/imgui",
+            "-I",
+            "header/External/imgui-sfml",
+            "-I",
+            "header/External/box2d",
+            "-Wall",
+            "-o",
+            "build/External/imgui/imgui_demo.o",
+            "code/External/imgui/imgui_demo.cpp"
+        ],
+        "directory": "/home/xni/Workspace/C++/GameSystems",
+        "file": "code/External/imgui/imgui_demo.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I",
+            "header",
+            "-I",
+            "header/External/imgui",
+            "-I",
+            "header/External/imgui-sfml",
+            "-I",
+            "header/External/box2d",
+            "-Wall",
+            "-o",
+            "build/External/imgui/imgui.o",
+            "code/External/imgui/imgui.cpp"
+        ],
+        "directory": "/home/xni/Workspace/C++/GameSystems",
+        "file": "code/External/imgui/imgui.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I",
+            "header",
+            "-I",
+            "header/External/imgui",
+            "-I",
+            "header/External/imgui-sfml",
+            "-I",
+            "header/External/box2d",
+            "-Wall",
+            "-o",
+            "build/External/imgui-sfml/imgui-SFML.o",
+            "code/External/imgui-sfml/imgui-SFML.cpp"
+        ],
+        "directory": "/home/xni/Workspace/C++/GameSystems",
+        "file": "code/External/imgui-sfml/imgui-SFML.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I",
+            "header",
+            "-I",
+            "header/External/imgui",
+            "-I",
+            "header/External/imgui-sfml",
+            "-I",
+            "header/External/box2d",
+            "-Wall",
+            "-o",
+            "build/States/State.o",
+            "code/States/State.cpp"
+        ],
+        "directory": "/home/xni/Workspace/C++/GameSystems",
+        "file": "code/States/State.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I",
+            "header",
+            "-I",
+            "header/External/imgui",
+            "-I",
+            "header/External/imgui-sfml",
+            "-I",
+            "header/External/box2d",
+            "-Wall",
+            "-o",
+            "build/Game.o",
+            "code/Game.cpp"
+        ],
+        "directory": "/home/xni/Workspace/C++/GameSystems",
+        "file": "code/Game.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I",
+            "header",
+            "-I",
+            "header/External/imgui",
+            "-I",
+            "header/External/imgui-sfml",
+            "-I",
+            "header/External/box2d",
+            "-Wall",
+            "-o",
+            "build/External/imgui/imgui_widgets.o",
+            "code/External/imgui/imgui_widgets.cpp"
+        ],
+        "directory": "/home/xni/Workspace/C++/GameSystems",
+        "file": "code/External/imgui/imgui_widgets.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I",
+            "header",
+            "-I",
+            "header/External/imgui",
+            "-I",
+            "header/External/imgui-sfml",
+            "-I",
+            "header/External/box2d",
+            "-Wall",
+            "-o",
+            "build/Component/Transform.o",
+            "code/Component/Transform.cpp"
+        ],
+        "directory": "/home/xni/Workspace/C++/GameSystems",
+        "file": "code/Component/Transform.cpp"
+    }
+]
