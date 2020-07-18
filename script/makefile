@@ -1,3 +1,13 @@
+$(info [DEPRECATED] Please use CMake instead.)
+$(info [          ] If you still want to use this script, you can remove the "exit" statement below.)
+$(info [          ] This script isn't guaranteed to work.)
+$(info  )
+$(info [   INFO   ] This script is a reminder of me not wanting to learn CMake)
+$(info [          ] Cus well, for me the tutorial on its website is a little confusing)
+$(info  )
+
+exit
+
 # Special Chars
 NULL :=
 TAB  := $(NULL)	$(NULL)
