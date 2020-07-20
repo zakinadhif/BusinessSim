@@ -21,6 +21,7 @@ target_link_directories(
 	libs
 )
 
+find_package(ImGui-SFML REQUIRED)
 target_link_libraries(
 	"${PROJECT_NAME}" PUBLIC
 	sfml-graphics
@@ -32,6 +33,10 @@ target_link_libraries(
 	GLU
 	glut
 	box2d
+)
+target_link_libraries(
+	"${PROJECT_NAME}" PRIVATE
+	ImGui-SFML::ImGui-SFML
 )
 
 set_target_properties("${PROJECT_NAME}"
