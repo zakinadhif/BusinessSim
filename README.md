@@ -2,16 +2,7 @@
 Just a mixture of SFML, TGUI, EnTT, and Box2d.
 with some spice.
 
-## Frequent Compile Error Cause
- - Haven't included needed-to-be-compiled in script/makefile
- - Haven't included needed header in script/makefile
-
 ## How to compile
-### Deprecated
-```make -f script/makefile [-j(how many jobs at once)]```
-increasing -j parameter should decrease compile time
-
-### Recommended
 ``` mkdir build && cd build && cmake .. && make [-j(how many jobs at once)]```
 increasing -j parameter should decrease compile time
 
@@ -26,3 +17,6 @@ Therefore, you need to symlink the compile_commands.json to the root of the proj
 ## Not-a-promise
 We will make map editor or entity editor where you can place entities easily
 using a GUI app.
+
+## Todo
+- Remove `tgui::Group::Ptr TestState::thisGroup` kind of model because it can be problematic, for example if you forget to add `thisGroup = tgui::Group::create()` before you call the `add` method into it, it will produce segfault
