@@ -29,7 +29,7 @@ public:
   void handleEvent();
   void handleInput();
 
-  sf::RenderWindow& getRenderWindow();
+  sf::RenderTarget& getRenderTarget();
 	tgui::Gui& getGui();
 private:
   void routine();

@@ -113,7 +113,7 @@ void Game::handleInput()
   peekState()->handleInput();
 }
 
-sf::RenderWindow& Game::getRenderWindow()
+sf::RenderTarget& Game::getRenderTarget()
 {
   return m_window;
 }
