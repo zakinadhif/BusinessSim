@@ -1,8 +1,6 @@
 #ifndef STATE_H
 #define STATE_H
 
-#include "Game.hpp"
-
 #include <TGUI/TGUI.hpp>
 #include <SFML/Graphics.hpp>
 
