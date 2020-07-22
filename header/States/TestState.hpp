@@ -20,8 +20,6 @@ public:
   void handleInput();
 
 	~TestState();
-private:
-	tgui::Group::Ptr thisGroup;
 };
 
 #endif

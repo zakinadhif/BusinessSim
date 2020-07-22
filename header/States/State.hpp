@@ -20,10 +20,10 @@ public:
   virtual void handleEvent(sf::Event event) {}
   virtual void handleInput() {}
 
-  virtual ~State() = default;
+  virtual ~State();
 protected:
   Game& m_game;
-	tgui::Gui& m_gui;
+	tgui::Group::Ptr UI;
 };
 
 #endif
