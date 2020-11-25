@@ -14,12 +14,12 @@ target_include_directories(
 	header/External/imgui
 	header/External/imgui-sfml
 	header/External/box2d
-)
+	)
 
 target_link_directories(
 	"${PROJECT_NAME}" PUBLIC
 	libs
-)
+	)
 
 find_package(ImGui-SFML REQUIRED)
 target_link_libraries(
@@ -33,17 +33,9 @@ target_link_libraries(
 	GLU
 	glut
 	box2d
-)
+	)
+
 target_link_libraries(
 	"${PROJECT_NAME}" PRIVATE
 	ImGui-SFML::ImGui-SFML
-)
-
-set_target_properties("${PROJECT_NAME}"
-	PROPERTIES
-	ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_NAME}"
-	LIBRARY_OUTPUT_DIRECTORY "${PROJECT_NAME}"
-	RUNTIME_OUTPUT_DIRECTORY "${PROJECT_NAME}"
-)
-
-file(COPY assets DESTINATION "${CMAKE_BINARY_DIR}/${PROJECT_NAME}")
+	)

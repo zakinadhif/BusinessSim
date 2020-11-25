@@ -1,4 +1,6 @@
 .vscode
 build/*
+debug/*
 bin/*
+.clangd
 compile_commands.json
