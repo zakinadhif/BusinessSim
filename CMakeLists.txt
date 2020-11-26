@@ -35,8 +35,8 @@ target_link_libraries(
 	sfml-graphics
 	sfml-window
 	sfml-system
+	tgui
+	fmt
 	GL
-	GLU
-	glut
 	ImGui-SFML::ImGui-SFML
 	)
