@@ -23,9 +23,8 @@ public:
 		return window;
 	};
 
-private:
+protected:
 	mutable sf::RenderWindow window;
 
-protected:
 	GameStateManager gameStateManager;
 };
