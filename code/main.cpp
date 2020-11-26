@@ -1,12 +1,12 @@
 #include "Engine/Engine.hpp"
-#include "Application/TestGame.hpp"
+#include "Application/BusinessStrategy.hpp"
 
 #include <SFML/Graphics.hpp>
 
 int main()
 {
 	Engine engine;
-	engine.run<TestGame>();
+	engine.run<BusinessStrategy>();
 
 	return 0;
 }
