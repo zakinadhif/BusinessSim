@@ -8,34 +8,35 @@ add_executable("${PROJECT_NAME}" ${SOURCES})
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
+# Put your box2d or EnTT or any other library's include directory below
 target_include_directories(
 	"${PROJECT_NAME}" PUBLIC
 	header
-	header/External/imgui
-	header/External/imgui-sfml
-	header/External/box2d
 	)
 
+# Put your box2d or EnTT or any other library's lib directory below
 target_link_directories(
 	"${PROJECT_NAME}" PUBLIC
-	libs
+
 	)
 
+# If you installed ImGui-SFML and imgui on your system, you can use this and
+# add ImGui-SFML::ImGui-SFML on target_link_libraries below this, if you don't
+# want to you can just remove both line, by default we include & link ImGui-SFML
+# from the system, which can be a trouble if you don't have it installed
 find_package(ImGui-SFML REQUIRED)
+# you can though, install it manually by adding its source code manually to this project
+# read more at dear imgui's and imgui-sfml's documentation
+
+# Put box2d below if you want to link your project with box2d
 target_link_libraries(
-	"${PROJECT_NAME}" PUBLIC
+	"${PROJECT_NAME}"
+	PRIVATE
 	sfml-graphics
 	sfml-window
 	sfml-system
-	tgui
-	thor
 	GL
 	GLU
 	glut
-	box2d
-	)
-
-target_link_libraries(
-	"${PROJECT_NAME}" PRIVATE
 	ImGui-SFML::ImGui-SFML
 	)
