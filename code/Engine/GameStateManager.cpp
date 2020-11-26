@@ -1,22 +1,47 @@
-#pragma once
+#include "Engine/GameStateManager.hpp"
+#include "Engine/GameState.hpp"
 
 #include <memory>
 
-class GameState;
-
-class GameStateManager : public sf::Drawable
+GameStateManager::GameStateManager()
 {
-public:
-	GameStateManager();
 
-	void push(std::unique_ptr<GameState> state);
-	std::unique_ptr<GameState> pop();
-	GameState& peek();
-	
-	const GameState& peek() const;
+}
 
-	void update(const sf::Time& elapsed);
-	void draw(s)
+void GameStateManager::push(std::unique_ptr<GameState> state)
+{
+	states.push(std::move(state));
+}
 
-private:
-};
+GameState& GameStateManager::peek()
+{
+	return *(states.top().get());
+}
+
+const GameState& GameStateManager::peek() const
+{
+	return *(states.top().get());
+}
+
+void GameStateManager::pop()
+{
+	states.pop();
+}
+
+void GameStateManager::handleEvent(sf::Event event)
+{
+	if (!states.empty())
+		peek().handleEvent(event);
+}
+
+void GameStateManager::update(const sf::Time& time)
+{
+	if (!states.empty())
+		peek().update(time);
+}
+
+void GameStateManager::draw(sf::RenderTarget &target) const
+{
+	if (!states.empty())
+		peek().draw(target);
+}

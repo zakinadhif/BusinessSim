@@ -1,11 +1,12 @@
-#include "Game.hpp"
-#include "States/TestState.hpp"
+#include "Engine/Engine.hpp"
+#include "Application/TestGame.hpp"
 
 #include <SFML/Graphics.hpp>
 
-int main() {
-  Game game;
-  game.run<TestState>();
+int main()
+{
+	Engine engine;
+	engine.run<TestGame>();
 
-  return 0;
+	return 0;
 }
