@@ -14,9 +14,9 @@ public:
 	    const sf::ContextSettings &settings = sf::ContextSettings()
 	);
 
-	void handleEvent(sf::Event event);
-	void update(const sf::Time& time);
-	void draw() const;
+	virtual void handleEvent(sf::Event event) = 0;
+	virtual void update(const sf::Time& time) = 0;
+	virtual void draw() const = 0;
 
 	sf::RenderWindow& getWindow()
 	{
@@ -25,6 +25,4 @@ public:
 
 protected:
 	mutable sf::RenderWindow window;
-
-	GameStateManager gameStateManager;
 };

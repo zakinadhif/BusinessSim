@@ -11,20 +11,3 @@ Game::Game(
 	: window(mode, title, style, settings)
 {
 }
-
-void Game::handleEvent(sf::Event event)
-{
-	gameStateManager.handleEvent(event);
-}
-
-void Game::update(const sf::Time &time)
-{
-	gameStateManager.update(time);
-}
-
-void Game::draw() const
-{
-	window.clear();
-	gameStateManager.draw(window);
-	window.display();
-}
