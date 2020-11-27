@@ -1,0 +1,93 @@
+Panel.topBarPanel {
+    Size = (100%, min(64, 16%));
+
+    Renderer {
+        backgroundcolor = #5A3921;
+        bordercolor = black;
+        borders = (0, 0, 0, 4);
+        texturebackground = None;
+    }
+
+    Button.gotoStatsButton {
+        Position = (&.width - width, 0);
+        Size = (height, 100%);
+        TextSize = 13;
+
+        Renderer {
+            backgroundcolor = #F5F5F5;
+            backgroundcolordisabled = #E6E6E6;
+            backgroundcolordown = #EBEBEB;
+            backgroundcolorhover = white;
+            bordercolor = black;
+            bordercolordisabled = #7D7D7D;
+            bordercolordown = black;
+            bordercolorfocused = #1E1EB4;
+            bordercolorhover = black;
+            borders = (4, 0, 0, 0);
+            textcolor = #3C3C3C;
+            textcolordisabled = #7D7D7D;
+            textcolordown = black;
+            textcolorhover = black;
+            texture = "/home/xni/Workspace/C++/Business_Sim/assets/Person-slim.png";
+            texturedisabled = None;
+            texturedown = None;
+            texturefocused = None;
+            texturehover = None;
+        }
+    }
+
+    Label.moneyLabel {
+        MaximumTextWidth = 100;
+        Position = ((moneyicon1.left + moneyicon1.width) + 8, moneyicon1.top);
+        ScrollbarPolicy = Never;
+        Size = (100, moneyicon1.height);
+        Text = "100$";
+        TextSize = 13;
+        VerticalAlignment = Center;
+
+        Renderer {
+            backgroundcolor = transparent;
+            bordercolor = black;
+            borders = (0, 0, 0, 0);
+            textcolor = white;
+            texturebackground = None;
+        }
+    }
+
+    Picture.moneyIcon1 {
+        Position = (10, 10);
+        Size = (36 * 1.2, 15.75 * 1.2);
+
+        Renderer {
+            texture = "/home/xni/Workspace/C++/Business_Sim/assets/Money-E-Single-slim.png";
+            transparenttexture = false;
+        }
+    }
+
+    Picture.ticketIcon1 {
+        Position = (moneyicon1.left, (moneyicon1.top + moneyicon1.height) + 5);
+        Size = (moneyicon1.width, moneyicon1.height);
+
+        Renderer {
+            texture = "/home/xni/Workspace/C++/Bu/Business_Sim/assets/Yellow-Ticket-slim.png";
+            transparenttexture = false;
+        }
+    }
+
+    Label.ticketLabel {
+        Position = ((ticketicon1.left + ticketicon1.width) + 8, ticketicon1.top);
+        ScrollbarPolicy = Never;
+        Size = (100, ticketicon1.height);
+        Text = 2;
+        TextSize = 13;
+        VerticalAlignment = Center;
+
+        Renderer {
+            backgroundcolor = transparent;
+            bordercolor = #3C3C3C;
+            borders = (0, 0, 0, 0);
+            textcolor = white;
+            texturebackground = None;
+        }
+    }
+}
