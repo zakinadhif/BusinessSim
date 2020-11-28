@@ -1,0 +1,117 @@
+Renderer.1 {
+}
+
+Panel.bottomPanel {
+    Position = (0, &.height - height);
+    Size = (100%, min(80, 15%));
+
+    Renderer {
+        backgroundcolor = #5A3921;
+        bordercolor = black;
+        borders = (0, 4, 0, 0);
+        texturebackground = None;
+    }
+
+    Group.buttonPlace1 {
+        Size = (&.width / 3, 100%);
+
+        Renderer {
+        }
+
+        Button.tradingButton {
+            Position = ((&.width / 2) - (width / 2), (&.height / 2) - (height / 2));
+            Size = (height, 80%);
+            TextSize = 13;
+
+            Renderer {
+                backgroundcolor = transparent;
+                backgroundcolordisabled = #E6E6E6;
+                backgroundcolordown = #EBEBEB;
+                backgroundcolorhover = white;
+                bordercolor = #3C3C3C;
+                bordercolordisabled = #7D7D7D;
+                bordercolordown = black;
+                bordercolorfocused = #1E1EB4;
+                bordercolorhover = black;
+                borders = (0, 0, 0, 0);
+                textcolor = white;
+                textcolordisabled = #7D7D7D;
+                textcolordown = black;
+                textcolorhover = black;
+                texture = "/home/xni/Workspace/C++/Business_Sim/assets/Candle-Stick-Chart-slim.png";
+                texturedisabled = None;
+                texturedown = None;
+                texturefocused = None;
+                texturehover = None;
+            }
+        }
+    }
+
+    Group.buttonPlace2 {
+        Position = ((&.width / 3) * 1, 0);
+        Size = (&.width / 3, 100%);
+        renderer = &1;
+
+        Button.commoditiesButton {
+            Position = ((&.width / 2) - (width / 2), (&.height / 2) - (height / 2));
+            Size = (height, 80%);
+            TextSize = 13;
+
+            Renderer {
+                backgroundcolor = transparent;
+                backgroundcolordisabled = #E6E6E6;
+                backgroundcolordown = #EBEBEB;
+                backgroundcolorhover = white;
+                bordercolor = #3C3C3C;
+                bordercolordisabled = #7D7D7D;
+                bordercolordown = black;
+                bordercolorfocused = #1E1EB4;
+                bordercolorhover = black;
+                borders = (0, 0, 0, 0);
+                textcolor = white;
+                textcolordisabled = #7D7D7D;
+                textcolordown = black;
+                textcolorhover = black;
+                texture = "/home/xni/Workspace/C++/Business_Sim/assets/Crates-Thin-Outline-slim.png";
+                texturedisabled = None;
+                texturedown = None;
+                texturefocused = None;
+                texturehover = None;
+            }
+        }
+    }
+
+    Group.buttonPlace3 {
+        Position = ((&.width / 3) * 2, 0);
+        Size = (&.width / 3, 100%);
+        renderer = &1;
+
+        Button.socialButton {
+            Position = ((&.width / 2) - (width / 2), (&.height / 2) - (height / 2));
+            Size = (height, 80%);
+            TextSize = 13;
+
+            Renderer {
+                backgroundcolor = transparent;
+                backgroundcolordisabled = #E6E6E6;
+                backgroundcolordown = #EBEBEB;
+                backgroundcolorhover = white;
+                bordercolor = #3C3C3C;
+                bordercolordisabled = #7D7D7D;
+                bordercolordown = black;
+                bordercolorfocused = #1E1EB4;
+                bordercolorhover = black;
+                borders = (0, 0, 0, 0);
+                textcolor = #3C3C3C;
+                textcolordisabled = #7D7D7D;
+                textcolordown = black;
+                textcolorhover = black;
+                texture = "/home/xni/Workspace/C++/Business_Sim/assets/Member-Circle-No-Outline-slim.png";
+                texturedisabled = None;
+                texturedown = None;
+                texturefocused = None;
+                texturehover = None;
+            }
+        }
+    }
+}
