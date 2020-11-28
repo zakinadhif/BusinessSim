@@ -17,7 +17,9 @@ public:
 	void update(const sf::Time& time) override;
 	void draw(sf::RenderTarget& target) const override;
 
+	~MainState();	
+
 private:
 	tgui::Gui& gui;
-	UserInterface userInterface;
+	UserInterface* userInterface;
 };
