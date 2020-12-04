@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16.3)
 
-project(GameSystem)
+project(BusinessStrategy)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS code/*.cpp)
 
@@ -37,6 +37,7 @@ target_link_libraries(
 	sfml-system
 	tgui
 	fmt
+	spdlog
 	GL
 	ImGui-SFML::ImGui-SFML
 	)
