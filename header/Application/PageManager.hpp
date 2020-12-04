@@ -9,7 +9,7 @@ class PageManager
 public:
 	PageManager(tgui::Container::Ptr pageContainer);
 
-	void addPage(const std::string& filepath, const std::string& name);
+	void addPage(const std::string& filepath, const std::string& name, bool setAsActive = false);
 	void removePage(const std::string& name);
 	void clearPages();
 

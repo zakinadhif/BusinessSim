@@ -1,14 +1,16 @@
 #include "Application/PageManager.hpp"
 
+#include <spdlog/spdlog.h>
 #include <memory>
 #include <string_view>
 
 PageManager::PageManager(tgui::Container::Ptr pageContainer)
 	: pageContainer(pageContainer)
 {
+	spdlog::info("PageManager: created with {} as page container", static_cast<void*>(pageContainer.get()));
 }
 
-void PageManager::addPage(const std::string& filepath, const std::string& name)
+void PageManager::addPage(const std::string& filepath, const std::string& name, bool setAsActive)
 {
 	if (name == "")
 	{
@@ -24,6 +26,17 @@ void PageManager::addPage(const std::string& filepath, const std::string& name)
 	// adding it to page container and saving the pointer
 	pageContainer->add(page, name);
 	pages.push_back(page);
+
+	if (setAsActive)
+	{
+		setActivePage(name);
+	}
+	else
+	{
+		page->setVisible(false);
+	}
+
+	spdlog::info("PageManager: Page \"{}\" was added from \"{}\", setAsActive? {}.", name, filepath, setAsActive);
 }
 
 void PageManager::removePage(const std::string& name)
@@ -51,6 +64,8 @@ void PageManager::removePage(const std::string& name)
 	{
 		throw "Page \"" + name + "\" can't be removed: No such page exist.";
 	}
+
+	spdlog::info("PageManager: Page \"{}\" was removed.", name);
 }
 
 void PageManager::clearPages()
@@ -58,6 +73,8 @@ void PageManager::clearPages()
 	pageContainer->removeAllWidgets();
 	pages.clear();
 	pageFilepaths.clear();
+
+	spdlog::info("PageManager: Pages cleared.");
 }
 
 void PageManager::setActivePage(const std::string &name)
@@ -82,6 +99,8 @@ void PageManager::setActivePage(const std::string &name)
 	{
 		throw "Page \"" + name + "\" can't be activated: No such page exist.";
 	}
+
+	spdlog::info("PageManager: Page \"{}\" is setted active", name);
 }
 
 void PageManager::clearActivePage()
@@ -90,6 +109,8 @@ void PageManager::clearActivePage()
 	{
 		page->setVisible(false);
 	}
+	
+	spdlog::info("PageManager: Active page is set to none.");
 }
 
 void PageManager::reloadPages()
@@ -101,11 +122,14 @@ void PageManager::reloadPages()
 		page->removeAllWidgets();
 		page->loadWidgetsFromFile(pageFilepaths[i]);
 	}
+
+	spdlog::info("PageManager: All pages has been reloaded.");
 }
 
 PageManager::~PageManager()
 {
 	clearPages();
+	spdlog::info("PageManager: Leaving with page cleared");
 }
 
 
