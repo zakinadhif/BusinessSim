@@ -1,6 +1,6 @@
 #include "Application/States/MainState.hpp"
 
-#include "Application/UserInterface.hpp"
+#include "Application/UserInterface/UserInterface.hpp"
 #include "Engine/GameStateManager.hpp"
 
 #include <TGUI/Widgets/Group.hpp>

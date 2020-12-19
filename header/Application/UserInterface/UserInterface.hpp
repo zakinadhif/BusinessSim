@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Application/PageManager.hpp"
+#include "Application/UserInterface/PageManager.hpp"
 
 #include <TGUI/TGUI.hpp>
 

@@ -1,4 +1,4 @@
-#include "Application/UserInterface.hpp"
+#include "Application/UserInterface/UserInterface.hpp"
 #include <TGUI/Exception.hpp>
 
 UserInterface::UserInterface(tgui::Group::Ptr container)

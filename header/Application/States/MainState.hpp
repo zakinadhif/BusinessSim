@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Application/UserInterface.hpp"
+#include "Application/UserInterface/UserInterface.hpp"
 
 #include "Engine/GameState.hpp"
 
