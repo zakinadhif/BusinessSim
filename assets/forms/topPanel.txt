@@ -8,34 +8,6 @@ Panel.topPanel {
         texturebackground = None;
     }
 
-    Button.gotoStatsButton {
-        Position = (&.width - width, 0);
-        Size = (height, 100%);
-        TextSize = 13;
-
-        Renderer {
-            backgroundcolor = #F5F5F5;
-            backgroundcolordisabled = #E6E6E6;
-            backgroundcolordown = #EBEBEB;
-            backgroundcolorhover = white;
-            bordercolor = black;
-            bordercolordisabled = #7D7D7D;
-            bordercolordown = black;
-            bordercolorfocused = black;
-            bordercolorhover = black;
-            borders = (4, 0, 0, 0);
-            textcolor = #3C3C3C;
-            textcolordisabled = #7D7D7D;
-            textcolordown = black;
-            textcolorhover = black;
-            texture = "/home/xni/Workspace/C++/Business_Sim/assets/Person-slim.png";
-            texturedisabled = None;
-            texturedown = None;
-            texturefocused = None;
-            texturehover = None;
-        }
-    }
-
     Picture.moneyIcon1 {
         Position = (10, 10);
         Size = (36 * 1.2, 15.75 * 1.2);
@@ -87,6 +59,62 @@ Panel.topPanel {
             borders = (0, 0, 0, 0);
             textcolor = white;
             texturebackground = None;
+        }
+    }
+
+    Button.stepButton {
+        Position = (((&.left + &.width) - width) - 12, ((&.height - height) / 2) / 2);
+        Text = Step;
+        TextSize = 13;
+
+        Renderer {
+            backgroundcolor = #F5F5F5;
+            backgroundcolordisabled = #E6E6E6;
+            backgroundcolordown = #EBEBEB;
+            backgroundcolorhover = white;
+            bordercolor = #3C3C3C;
+            bordercolordisabled = #7D7D7D;
+            bordercolordown = black;
+            bordercolorfocused = #1E1EB4;
+            bordercolorhover = black;
+            borders = (1, 1, 1, 1);
+            textcolor = #3C3C3C;
+            textcolordisabled = #7D7D7D;
+            textcolordown = black;
+            textcolorhover = black;
+            texture = None;
+            texturedisabled = None;
+            texturedown = None;
+            texturefocused = None;
+            texturehover = None;
+        }
+    }
+
+    Button.statsButton {
+        Position = (((&.left + &.width) - width) - 12, (stepbutton.top + stepbutton.height) + 1);
+        Text = Stats;
+        TextSize = 13;
+
+        Renderer {
+            backgroundcolor = #F5F5F5;
+            backgroundcolordisabled = #E6E6E6;
+            backgroundcolordown = #EBEBEB;
+            backgroundcolorhover = white;
+            bordercolor = #3C3C3C;
+            bordercolordisabled = #7D7D7D;
+            bordercolordown = black;
+            bordercolorfocused = #1E1EB4;
+            bordercolorhover = black;
+            borders = (1, 1, 1, 1);
+            textcolor = #3C3C3C;
+            textcolordisabled = #7D7D7D;
+            textcolordown = black;
+            textcolorhover = black;
+            texture = None;
+            texturedisabled = None;
+            texturedown = None;
+            texturefocused = None;
+            texturehover = None;
         }
     }
 }

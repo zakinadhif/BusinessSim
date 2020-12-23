@@ -1,0 +1,8 @@
+Panel.Panel1 {
+    Size = (100%, 100%);
+
+    Renderer {
+        backgroundcolor = #E5B083;
+        texturebackground = None;
+    }
+}
