@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16.3)
+cmake_minimum_required(VERSION 3.18.4)
 
 project(BusinessStrategy)
 
@@ -7,6 +7,13 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS code/*.cpp)
 add_executable("${PROJECT_NAME}" ${SOURCES})
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+
+# Set to use C++17
+set_target_properties(
+	"${PROJECT_NAME}"
+	PROPERTIES
+	CXX_STANDARD 17
+	)
 
 # Put your box2d or EnTT or any other library's include directory below
 target_include_directories(
