@@ -11,8 +11,10 @@ class UserInterface
 public:
 	UserInterface(tgui::Group::Ptr container);
 
+	tgui::Group::Ptr getUIContainer();
+
 	~UserInterface();
 private:
-	tgui::Group::Ptr container;
+	tgui::Group::Ptr uiContainer;
 	PageManager* pageManager;
 };
