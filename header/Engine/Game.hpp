@@ -23,6 +23,8 @@ public:
 		return window;
 	};
 
+	virtual ~Game() = default;
+
 protected:
 	mutable sf::RenderWindow window;
 };
