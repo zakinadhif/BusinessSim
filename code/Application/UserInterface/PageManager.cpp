@@ -118,6 +118,8 @@ void PageManager::reloadPages()
 	for (std::size_t i = 0; i < pages.size(); ++i)
 	{
 		auto& page = pages[i];
+		const std::string& pageName = std::static_pointer_cast<tgui::Widget>(page)->getWidgetName();
+		spdlog::info("PageManager: Reloading page \"{}\" ...", pageName);
 
 		page->removeAllWidgets();
 		page->loadWidgetsFromFile(pageFilepaths[i]);
