@@ -2,12 +2,16 @@
 
 #include "Application/States/MainState.hpp"
 
+#include "Application/Utility/Random.hpp"
+
 BusinessStrategy::BusinessStrategy()
 	: Game(sf::VideoMode(300, 500), "TestGame")
 	, gui(window)
 {
 	gameStateManager.push(std::make_unique<MainState>(gameStateManager, gui));
 	window.setFramerateLimit(60);
+	
+	Random::initialize();
 }
 
 void BusinessStrategy::handleEvent(sf::Event event)
