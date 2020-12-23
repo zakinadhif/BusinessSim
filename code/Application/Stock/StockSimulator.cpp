@@ -1,6 +1,8 @@
 #include "Application/Stock/StockSimulator.hpp"
 #include "Application/Stock/StockQuote.hpp"
 
+#include <spdlog/spdlog.h>
+
 #include <cmath>
 
 StockSimulator::StockSimulator(int tradingPeriod)
@@ -12,7 +14,7 @@ StockSimulator::StockSimulator(int tradingPeriod)
 void StockSimulator::step()
 {
 	float growth = std::exp(drift + volatility * boxMullerRandom());
-	price = price * std::pow(growth, 1 / tradingPeriod);
+	price = price * std::pow(growth, 1 / static_cast<float>(tradingPeriod));
 	pricePoints.push_back(price);
 
 	++stepCount;

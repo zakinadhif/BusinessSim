@@ -1,11 +1,10 @@
 #pragma once
 
 #include "Application/Stock/StockSettings.hpp"
+#include "Application/Stock/StockQuote.hpp"
 #include "Application/Utility/Random.hpp"
 
 #include <vector>
-
-class StockQuote;
 
 class StockSimulator
 {
