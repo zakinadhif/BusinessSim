@@ -1,5 +1,6 @@
 #include "Application/States/MainState.hpp"
 
+#include "Application/GameLogic.hpp"
 #include "Application/UserInterface/UserInterface.hpp"
 #include "Engine/GameStateManager.hpp"
 
@@ -12,10 +13,12 @@ MainState::MainState(GameStateManager& gameStateManager, tgui::Gui& gui)
 	gui.add(uiContainer, "mainUi");
 
 	userInterface = new UserInterface(uiContainer);
+	gameLogic = new GameLogic(*userInterface);
 }
 
 void MainState::handleEvent(sf::Event event)
 {
+
 }
 
 void MainState::update(const sf::Time &time)
@@ -31,4 +34,5 @@ void MainState::draw(sf::RenderTarget &target) const
 MainState::~MainState()
 {
 	delete userInterface;
+	delete gameLogic;
 }
