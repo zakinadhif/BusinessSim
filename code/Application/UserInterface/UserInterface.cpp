@@ -3,6 +3,7 @@
 #include "Application/UserInterface/UIComponentNames.hpp"
 #include <TGUI/Exception.hpp>
 #include <TGUI/Widgets/Group.hpp>
+#include <TGUI/Widgets/VerticalLayout.hpp>
 
 UserInterface::UserInterface(tgui::Group::Ptr uiContainer)
 	: uiContainer(uiContainer)
@@ -42,6 +43,17 @@ UserInterface::UserInterface(tgui::Group::Ptr uiContainer)
 
 	auto commoditiesButton = uiContainer->get(UIComponentNames::SWITCH_COMMODITIES_MENU_BUTTON);
 	if (commoditiesButton) commoditiesButton->connect("pressed", [this](){pageManager->setActivePage("Commodities Menu");});
+
+	tgui::Group::Ptr tradingPage = pageContainer->get<tgui::Group>("Trading Menu");
+	tgui::Panel::Ptr tradingPageInnerPanel = tradingPage->get<tgui::Panel>("Panel1");
+
+	auto stockList = tgui::VerticalLayout::create();
+	tradingPageInnerPanel->add(stockList, "stockList");
+
+	auto abacaStock = tgui::Group::create();
+	abacaStock->loadWidgetsFromFile("assets/components/stockItem.txt");
+
+	stockList->add(abacaStock, 1.f/4.f, "abacaStock");
 }
 
 tgui::Group::Ptr UserInterface::getUIContainer()
