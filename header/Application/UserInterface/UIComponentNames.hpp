@@ -14,4 +14,8 @@ namespace UIComponentNames
 
 	constexpr char STEP_BUTTON[] = "stepButton";
 	constexpr char STATS_BUTTON[] = "statsButton";
+
+	constexpr char ABACA_STOCK[] = "abacaStock";
+
+	constexpr char STOCK_LAST_PRICE_LABEL[] = "lastPriceLabel";
 };
