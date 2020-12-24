@@ -8,8 +8,6 @@
 #include <spdlog/common.h>
 #include <spdlog/spdlog.h>
 
-#include <iostream>
-
 GameLogic::GameLogic(UserInterface& ui)
 	: ui(ui), abacaStock(StockSettings::STOCK_TRADING_LENGTH)
 {
@@ -63,6 +61,12 @@ void GameLogic::stepGame()
 
 	abacaStock.step();
 	spdlog::info("GameLogic: [OnlyFun] abaca stock price is at {} E coins", abacaStock.getPrice());
+
+	auto uiContainer = ui.getUIContainer();
+	tgui::Group::Ptr abacaStockWidget = uiContainer->get<tgui::Group>(UIComponentNames::ABACA_STOCK);
+	
+	tgui::Label::Ptr abacaPriceLabel = abacaStockWidget->get<tgui::Label>(UIComponentNames::STOCK_LAST_PRICE_LABEL);
+	abacaPriceLabel->setText(fmt::format("{} E", abacaStock.getPrice()));
 }
 
 GameLogic::~GameLogic()
