@@ -1,17 +1,17 @@
-#include "Application/Stock/StockSimulator.hpp"
-#include "Application/Stock/StockQuote.hpp"
+#include "Application/Price/PriceSimulator.hpp"
+#include "Application/Price/PriceQuote.hpp"
 
 #include <spdlog/spdlog.h>
 
 #include <cmath>
 
-StockSimulator::StockSimulator(int tradingPeriod)
+PriceSimulator::PriceSimulator(int tradingPeriod)
 	: tradingPeriod(tradingPeriod)
 {
 
 }
 
-void StockSimulator::step()
+void PriceSimulator::step()
 {
 	float growth = std::exp(drift + volatility * boxMullerRandom());
 	price = price * std::pow(growth, 1 / static_cast<float>(tradingPeriod));
@@ -21,61 +21,61 @@ void StockSimulator::step()
 
 	if (stepCount == tradingPeriod)
 	{
-		StockQuote stockQuote = createStockQuote(
+		PriceQuote stockQuote = createPriceQuote(
 		                            pricePoints.begin(),
 		                            pricePoints.end()
 		                        );
 	
-		stockQuotes.push_back(stockQuote);
+		priceQuotes.push_back(stockQuote);
 		pricePoints.clear();
 
 		stepCount = 0;
 	}
 }
 
-void StockSimulator::setPrice(float price)
+void PriceSimulator::setPrice(float price)
 {
 	this->price = price;
 	pricePoints.push_back(price);
 	++stepCount;
 }
 
-void StockSimulator::setDrift(float drift)
+void PriceSimulator::setDrift(float drift)
 {
 	this->drift = drift;
 }
 
-void StockSimulator::setVolatility(float volatility)
+void PriceSimulator::setVolatility(float volatility)
 {
 	this->volatility = volatility;
 }
 
-float StockSimulator::getPrice() const
+float PriceSimulator::getPrice() const
 {
 	return price;
 }
 
-float StockSimulator::getDrift() const
+float PriceSimulator::getDrift() const
 {
 	return drift;
 }
 
-float StockSimulator::getVolatility() const
+float PriceSimulator::getVolatility() const
 {
 	return volatility;
 }
 
-const std::vector<StockQuote>& StockSimulator::getStockQuotes() const
+const std::vector<PriceQuote>& PriceSimulator::getPriceQuotes() const
 {
-	return stockQuotes;
+	return priceQuotes;
 }
 
-const std::vector<float>& StockSimulator::getPricePoints() const
+const std::vector<float>& PriceSimulator::getPricePoints() const
 {
 	return pricePoints;
 }
 
-float StockSimulator::boxMullerRandom()
+float PriceSimulator::boxMullerRandom()
 {
 	float u1 = random.getRandomNumber();
 	float u2 = random.getRandomNumber();

@@ -1,15 +1,15 @@
 #pragma once
 
-#include "Application/Stock/StockSettings.hpp"
-#include "Application/Stock/StockQuote.hpp"
+#include "Application/GameSettings.hpp"
+#include "Application/Price/PriceQuote.hpp"
 #include "Application/Utility/Random.hpp"
 
 #include <vector>
 
-class StockSimulator
+class PriceSimulator
 {
 public:
-	StockSimulator(int tradingPeriod = StockSettings::ONE_DAY_LENGTH);
+	PriceSimulator(int tradingPeriod = GameSettings::ONE_DAY_LENGTH);
 
 	void setPrice(float price);
 	void setDrift(float drift);
@@ -21,7 +21,7 @@ public:
 
 	void step();
 
-	const std::vector<StockQuote>& getStockQuotes() const;
+	const std::vector<PriceQuote>& getPriceQuotes() const;
 	const std::vector<float>& getPricePoints() const;
 
 private:
@@ -29,7 +29,7 @@ private:
 	float drift = 0.f;
 	float volatility = 0.01f;
 
-	std::vector<StockQuote> stockQuotes;
+	std::vector<PriceQuote> priceQuotes;
 	std::vector<float> pricePoints;
 
 	int stepCount = 0;
