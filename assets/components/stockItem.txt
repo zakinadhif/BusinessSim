@@ -146,12 +146,71 @@ Panel.stockItem {
         }
 
         Label.lastPriceLabel {
-            AutoSize = true;
+            HorizontalAlignment = Center;
             ScrollbarPolicy = Never;
-            Size = (31.2, 18);
+            Size = (45, 100%);
             Text = "10 E";
             TextSize = 13;
-            renderer = &1;
+            VerticalAlignment = Center;
+
+            Renderer {
+                backgroundcolor = #DDDDDD;
+                bordercolor = #3C3C3C;
+                borders = (1, 1, 1, 1);
+                textcolor = #3C3C3C;
+                texturebackground = None;
+            }
+        }
+
+        Panel.lastQuoteDisplay {
+            Position = ((lastpricelabel.left + lastpricelabel.width) + 8, 0);
+            Size = ((&.width - lastpricelabel.width) - 8, 100%);
+
+            Renderer {
+                backgroundcolor = #F2F2F2;
+                bordercolor = black;
+                borders = (1, 1, 1, 1);
+                texturebackground = None;
+            }
+
+            Label.openPriceLabel {
+                AutoSize = true;
+                ScrollbarPolicy = Never;
+                Size = (31.2, 18);
+                Text = "10 E";
+                TextSize = 13;
+                renderer = &1;
+            }
+
+            Label.closePriceLabel {
+                AutoSize = true;
+                Position = (0, openpricelabel.top + openpricelabel.height);
+                ScrollbarPolicy = Never;
+                Size = (31.2, 18);
+                Text = "10 E";
+                TextSize = 13;
+                renderer = &1;
+            }
+
+            Label.highPriceLabel {
+                AutoSize = true;
+                Position = (openpricelabel.left + openpricelabel.width, 0);
+                ScrollbarPolicy = Never;
+                Size = (31.2, 18);
+                Text = "10 E";
+                TextSize = 13;
+                renderer = &1;
+            }
+
+            Label.lowPriceLabel {
+                AutoSize = true;
+                Position = (closepricelabel.left + closepricelabel.width, closepricelabel.top);
+                ScrollbarPolicy = Never;
+                Size = (31.2, 18);
+                Text = "10 E";
+                TextSize = 13;
+                renderer = &1;
+            }
         }
     }
 }
