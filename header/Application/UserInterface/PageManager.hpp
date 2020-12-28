@@ -13,6 +13,8 @@ public:
 	void removePage(const std::string& name);
 	void clearPages();
 
+	tgui::Group::Ptr getPage(const std::string& name);
+
 	void reloadPages();
 
 	void setActivePage(const std::string& name);

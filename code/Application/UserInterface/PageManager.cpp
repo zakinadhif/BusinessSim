@@ -10,6 +10,20 @@ PageManager::PageManager(tgui::Container::Ptr pageContainer)
 	spdlog::info("PageManager: created with {} as page container", static_cast<void*>(pageContainer.get()));
 }
 
+tgui::Group::Ptr PageManager::getPage(const std::string &name)
+{
+	for (auto& page : pages)
+	{
+		if (std::static_pointer_cast<tgui::Widget>(page)->getWidgetName()
+				== name)
+		{
+			return page;
+		}
+	}
+	
+	return {};
+}
+
 void PageManager::addPage(const std::string& filepath, const std::string& name, bool setAsActive)
 {
 	if (name == "")
