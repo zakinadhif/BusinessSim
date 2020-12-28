@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Application/UserInterface/PageManager.hpp"
+#include "Application/UserInterface/StockWidgetList.hpp"
 
 #include <TGUI/TGUI.hpp>
 
@@ -13,8 +14,12 @@ public:
 
 	tgui::Group::Ptr getUIContainer();
 
+	void addStockWidget(const PriceSimulator& stock, const std::string& name);
+	void updateStockWidgetList();
+
 	~UserInterface();
 private:
 	tgui::Group::Ptr uiContainer;
+	StockWidgetList* stockWidgetList;
 	PageManager* pageManager;
 };

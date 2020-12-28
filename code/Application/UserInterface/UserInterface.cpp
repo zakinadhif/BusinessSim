@@ -1,6 +1,11 @@
 #include "Application/UserInterface/UserInterface.hpp"
 #include "Application/PlayerStats.hpp"
+
+#include "Application/Price/PriceSimulator.hpp"
+#include "Application/UserInterface/StockWidgetList.hpp"
 #include "Application/UserInterface/UIComponentNames.hpp"
+#include "Application/UserInterface/UIFormPaths.hpp"
+
 #include <TGUI/Exception.hpp>
 #include <TGUI/Widgets/Group.hpp>
 #include <TGUI/Widgets/VerticalLayout.hpp>
@@ -25,35 +30,27 @@ UserInterface::UserInterface(tgui::Group::Ptr uiContainer)
 	    [this]()
 		{
 			pageManager->reloadPages();
+			stockWidgetList->reloadStockWidgets();
 		}
     );
 	uiContainer->add(reloadPageButton, "reloadPageButton");
 
-	pageManager->addPage("assets/forms/emptyPage.txt", "Empty Page");
-	pageManager->addPage("assets/forms/tradingMenu.txt", "Trading Menu");
-	pageManager->addPage("assets/forms/socialPage.txt", "Social Menu");
-	pageManager->addPage("assets/forms/commoditiesPage.txt", "Commodities Menu");
+	pageManager->addPage(UIFormPaths::EMPTY_PAGE, "Empty Page");
+	pageManager->addPage(UIFormPaths::TRADE_MENU, "Trading Menu");
+	pageManager->addPage(UIFormPaths::SOCIAL_MENU, "Social Menu");
+	pageManager->addPage(UIFormPaths::COMMODITIES_MENU, "Commodities Menu");
 	pageManager->setActivePage("Empty Page");
 	
-	auto tradingButton = uiContainer->get(UIComponentNames::SWITCH_TRADING_MENU_BUTTON);
+	auto tradingButton = uiContainer->get(UIComponentNames::GOTO_TRADING_MENU_BUTTON);
 	if (tradingButton) tradingButton->connect("pressed", [this](){pageManager->setActivePage("Trading Menu");});
 
-	auto socialButton = uiContainer->get(UIComponentNames::SWITCH_SOCIAL_MENU_BUTTON);
+	auto socialButton = uiContainer->get(UIComponentNames::GOTO_SOCIAL_MENU_BUTTON);
 	if (socialButton) socialButton->connect("pressed", [this](){pageManager->setActivePage("Social Menu");});
 
-	auto commoditiesButton = uiContainer->get(UIComponentNames::SWITCH_COMMODITIES_MENU_BUTTON);
+	auto commoditiesButton = uiContainer->get(UIComponentNames::GOTO_COMMODITIES_MENU_BUTTON);
 	if (commoditiesButton) commoditiesButton->connect("pressed", [this](){pageManager->setActivePage("Commodities Menu");});
 
-	tgui::Group::Ptr tradingPage = pageContainer->get<tgui::Group>("Trading Menu");
-	tgui::Panel::Ptr tradingPageInnerPanel = tradingPage->get<tgui::Panel>("Panel1");
-
-	auto stockList = tgui::VerticalLayout::create();
-	tradingPageInnerPanel->add(stockList, "stockList");
-
-	auto abacaStock = tgui::Group::create();
-	abacaStock->loadWidgetsFromFile("assets/components/stockItem.txt");
-
-	stockList->add(abacaStock, 1.f/4.f, "abacaStock");
+	stockWidgetList = new StockWidgetList(pageManager->getPage("Trading Menu"));
 }
 
 tgui::Group::Ptr UserInterface::getUIContainer()
@@ -61,7 +58,18 @@ tgui::Group::Ptr UserInterface::getUIContainer()
 	return uiContainer;
 }
 
+void UserInterface::addStockWidget(const PriceSimulator& stock, const std::string& name)
+{
+	stockWidgetList->createStockWidget(stock, name);
+}
+
+void UserInterface::updateStockWidgetList()
+{
+	stockWidgetList->updateStockWidgets();
+}
+
 UserInterface::~UserInterface()
 {
+	delete stockWidgetList;
 	delete pageManager;
 }
