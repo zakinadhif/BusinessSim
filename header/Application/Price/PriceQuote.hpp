@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 
-struct StockQuote
+struct PriceQuote
 {
 	float open = 0;
 	float close = 0;
@@ -12,12 +12,12 @@ struct StockQuote
 };
 
 template<class Iterator>
-StockQuote createStockQuote(Iterator begin, Iterator end)
+PriceQuote createPriceQuote(Iterator begin, Iterator end)
 {
-	return StockQuote
+	return PriceQuote
 	{
 		/* Open  */ *begin,
-		/* Close */ *end,
+		/* Close */ *(end-1),
 		/* High  */ *std::max_element(begin, end),
 		/* Low   */ *std::min_element(begin, end)
 	};
