@@ -5,7 +5,7 @@
 #include "Application/Utility/Random.hpp"
 
 BusinessStrategy::BusinessStrategy()
-	: Game(sf::VideoMode(300, 500), "TestGame")
+	: Game(sf::VideoMode(450, 750), "TestGame")
 	, gui(window)
 {
 	gameStateManager.push(std::make_unique<MainState>(gameStateManager, gui));
