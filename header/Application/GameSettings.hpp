@@ -1,6 +1,6 @@
 #pragma once
 
-namespace StockSettings
+namespace GameSettings
 {
 	constexpr int STOCK_TRADING_LENGTH = 4;
 	constexpr int COMMODITIES_TRADING_LENGTH = 4;
