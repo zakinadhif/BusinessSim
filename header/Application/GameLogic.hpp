@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Application/PlayerStats.hpp"
-#include "Application/Stock/StockSimulator.hpp"
+#include "Application/Price/PriceSimulator.hpp"
 
 #include <TGUI/TGUI.hpp>
 
@@ -26,7 +26,7 @@ private:
 	PlayerStats playerStats;
 	UserInterface& ui;
 
-	StockSimulator abacaStock;
+	PriceSimulator abacaStock;
 
 	std::size_t playerStatsUICallbacksID = 0;
 };

@@ -1,6 +1,6 @@
 #include "Application/GameLogic.hpp"
 
-#include "Application/Stock/StockSettings.hpp"
+#include "Application/GameSettings.hpp"
 #include "Application/UserInterface/UserInterface.hpp"
 #include "Application/UserInterface/UIComponentNames.hpp"
 
@@ -9,7 +9,7 @@
 #include <spdlog/spdlog.h>
 
 GameLogic::GameLogic(UserInterface& ui)
-	: ui(ui), abacaStock(StockSettings::STOCK_TRADING_LENGTH)
+	: ui(ui) 
 {
 	spdlog::info("GameLogic: created with {} as ui.", static_cast<void*>(&ui));
 	init();
@@ -23,10 +23,9 @@ void GameLogic::init()
 
 void GameLogic::initStocks()
 {
-	// Abaca Stock
-	abacaStock.setPrice(12.99f);
-	abacaStock.setDrift(0.5f);
-	abacaStock.setVolatility(0.2f);
+	abacaStock.setPrice(12.0f);
+	abacaStock.setDrift(0.01f);
+	abacaStock.setVolatility(0.02f);
 }
 
 void GameLogic::initUILogics()
@@ -52,6 +51,8 @@ void GameLogic::initUILogics()
 	stepGameButton->connect("pressed", [this](){ stepGame(); });
 
 	spdlog::info("GameLogic: initialization complete.");
+
+	ui.addStockWidget(abacaStock, "abaca inc");	
 }
 
 void GameLogic::stepGame()
@@ -60,13 +61,7 @@ void GameLogic::stepGame()
 	spdlog::info("GameLogic: gameStepCount: {}", gameStepCount);
 
 	abacaStock.step();
-	spdlog::info("GameLogic: [OnlyFun] abaca stock price is at {} E coins", abacaStock.getPrice());
-
-	auto uiContainer = ui.getUIContainer();
-	tgui::Group::Ptr abacaStockWidget = uiContainer->get<tgui::Group>(UIComponentNames::ABACA_STOCK);
-	
-	tgui::Label::Ptr abacaPriceLabel = abacaStockWidget->get<tgui::Label>(UIComponentNames::STOCK_LAST_PRICE_LABEL);
-	abacaPriceLabel->setText(fmt::format("{} E", abacaStock.getPrice()));
+	ui.updateStockWidgetList();
 }
 
 GameLogic::~GameLogic()
