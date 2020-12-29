@@ -111,7 +111,7 @@ void StockWidgetList::updateStockWidget(const std::string& name)
 
 	stockWidget
 		->get<tgui::Label>(UIComponentNames::STOCK_LAST_PRICE_LABEL)
-		->setText(fmt::format("{} E", stockData.getPrice()));
+		->setText(fmt::format("{:.2f} E", stockData.getPrice()));
 }
 
 std::optional<StockWidgetList::StockWidgetData> StockWidgetList::tryGetStockWidgetData(const std::string& name)
