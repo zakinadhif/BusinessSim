@@ -9,6 +9,7 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS code/*.cpp)
 add_executable("${PROJECT_NAME}" ${SOURCES})
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+add_compile_options(-Wall -Wextra -pedantic -Werror -Og)
 
 # Set to use C++17
 set_target_properties(
@@ -34,6 +35,7 @@ target_link_directories(
 # want to you can just remove both line, by default we include & link ImGui-SFML
 # from the system, which can be a trouble if you don't have it installed
 find_package(ImGui-SFML REQUIRED)
+find_package(nlohmann_json 3.2.0 REQUIRED)
 # you can though, install it manually by adding its source code manually to this project
 # read more at dear imgui's and imgui-sfml's documentation
 
@@ -49,4 +51,5 @@ target_link_libraries(
 	spdlog
 	GL
 	ImGui-SFML::ImGui-SFML
+	nlohmann_json::nlohmann_json
 	)
