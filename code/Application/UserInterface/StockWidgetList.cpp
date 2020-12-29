@@ -94,19 +94,19 @@ void StockWidgetList::updateStockWidget(const std::string& name)
 
 		stockWidget
 			->get<tgui::Label>(UIComponentNames::STOCK_OPEN_PRICE_LABEL)
-			->setText(fmt::format("{} E", latestQuote.open));
+			->setText(fmt::format("{:.2f} E", latestQuote.open));
 
 		stockWidget
 			->get<tgui::Label>(UIComponentNames::STOCK_CLOSE_PRICE_LABEL)
-			->setText(fmt::format("{} E", latestQuote.close));
+			->setText(fmt::format("{:.2f} E", latestQuote.close));
 		
 		stockWidget
 			->get<tgui::Label>(UIComponentNames::STOCK_HIGH_PRICE_LABEL)
-			->setText(fmt::format("{} E", latestQuote.high));
+			->setText(fmt::format("{:.2f} E", latestQuote.high));
 		
 		stockWidget
 			->get<tgui::Label>(UIComponentNames::STOCK_LOW_PRICE_LABEL)
-			->setText(fmt::format("{} E", latestQuote.low));
+			->setText(fmt::format("{:.2f} E", latestQuote.low));
 	}
 
 	stockWidget
