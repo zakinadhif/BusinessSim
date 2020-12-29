@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Application/PlayerStats.hpp"
-#include "Application/Price/PriceSimulator.hpp"
+#include "Application/Market/PriceSimulator.hpp"
 
 #include <TGUI/TGUI.hpp>
 

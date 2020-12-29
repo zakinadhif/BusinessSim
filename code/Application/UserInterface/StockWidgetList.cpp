@@ -1,6 +1,6 @@
 #include "Application/UserInterface/StockWidgetList.hpp"
-#include "Application/Price/PriceQuote.hpp"
-#include "Application/Price/PriceSimulator.hpp"
+#include "Application/Market/PriceQuote.hpp"
+#include "Application/Market/PriceSimulator.hpp"
 
 #include "Application/UserInterface/UIComponentNames.hpp"
 #include "Application/UserInterface/UIFormPaths.hpp"
