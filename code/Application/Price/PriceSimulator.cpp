@@ -15,20 +15,11 @@ void PriceSimulator::step()
 {
 	float growth = std::exp(drift + volatility * boxMullerRandom());
 	price = price * std::pow(growth, 1 / static_cast<float>(tradingPeriod));
-	pricePoints.push_back(price);
 
 	++stepCount;
 
 	if (stepCount == tradingPeriod)
 	{
-		PriceQuote stockQuote = createPriceQuote(
-		                            pricePoints.begin(),
-		                            pricePoints.end()
-		                        );
-	
-		priceQuotes.push_back(stockQuote);
-		pricePoints.clear();
-
 		stepCount = 0;
 	}
 }
@@ -36,8 +27,6 @@ void PriceSimulator::step()
 void PriceSimulator::setPrice(float price)
 {
 	this->price = price;
-	pricePoints.push_back(price);
-	++stepCount;
 }
 
 void PriceSimulator::setDrift(float drift)
@@ -63,16 +52,6 @@ float PriceSimulator::getDrift() const
 float PriceSimulator::getVolatility() const
 {
 	return volatility;
-}
-
-const std::vector<PriceQuote>& PriceSimulator::getPriceQuotes() const
-{
-	return priceQuotes;
-}
-
-const std::vector<float>& PriceSimulator::getPricePoints() const
-{
-	return pricePoints;
 }
 
 float PriceSimulator::boxMullerRandom()
