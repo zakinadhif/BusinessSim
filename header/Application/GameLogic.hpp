@@ -27,6 +27,7 @@ private:
 	UserInterface& ui;
 
 	PriceSimulator abacaStock;
+	PriceSimulator oilStock;
 
 	std::size_t playerStatsUICallbacksID = 0;
 };

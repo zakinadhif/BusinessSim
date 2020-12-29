@@ -26,6 +26,10 @@ void GameLogic::initStocks()
 	abacaStock.setPrice(12.0f);
 	abacaStock.setDrift(0.01f);
 	abacaStock.setVolatility(0.02f);
+
+	oilStock.setPrice(20.0f);
+	oilStock.setDrift(0.0001f);
+	oilStock.setVolatility(0.02f);
 }
 
 void GameLogic::initUILogics()
@@ -52,7 +56,8 @@ void GameLogic::initUILogics()
 
 	spdlog::info("GameLogic: initialization complete.");
 
-	ui.addStockWidget(abacaStock, "abaca inc");	
+	ui.addStockWidget(abacaStock, "Abaca Inc");	
+	ui.addStockWidget(oilStock, "Oil");
 }
 
 void GameLogic::stepGame()
@@ -61,6 +66,7 @@ void GameLogic::stepGame()
 	spdlog::info("GameLogic: gameStepCount: {}", gameStepCount);
 
 	abacaStock.step();
+	oilStock.step();
 	ui.updateStockWidgetList();
 }
 
