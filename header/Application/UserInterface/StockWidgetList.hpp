@@ -31,9 +31,13 @@ private:
 		const PriceSimulator& data;
 	};
 
+	void configureStockWidgetProperties(const std::string& name);
 	void updateStockWidget(const std::string& name);
 	std::optional<StockWidgetData> tryGetStockWidgetData(const std::string& name);
 	std::optional<StockWidgetData> tryGetStockWidgetData(const std::string& name) const;
+
+	std::optional<StockWidgetData> getLastWidgetData();
+	std::optional<tgui::Group::Ptr> getLastWidget();
 
 	tgui::Container::Ptr parentContainer;
 	std::unordered_map<std::string, StockWidgetData> stockWidgetDatas;

@@ -39,6 +39,7 @@ void StockWidgetList::createStockWidget(const PriceSimulator& stock, const std::
 
 	stockWidgetDatas.emplace(std::make_pair(name, StockWidgetData { stockWidget, stock }));
 
+	configureStockWidgetProperties(name);
 
 	previousWidgetName = name;  
 }
@@ -76,6 +77,30 @@ void StockWidgetList::updateStockWidgets()
 	{
 		updateStockWidget(widgetData.first);
 	}
+}
+
+void StockWidgetList::configureStockWidgetProperties(const std::string& name)
+{
+	auto widgetDataOpt = tryGetStockWidgetData(name);
+	if (!widgetDataOpt.has_value()) return;
+
+	auto stockWidget = widgetDataOpt->widgetPtr;
+	
+	stockWidget
+		->get<tgui::Label>(UIComponentNames::STOCK_COMPANY_NAME)
+		->setText(name);
+
+	tgui::Label::Ptr 
+		buyCountLabel = stockWidget->get<tgui::Label>(UIComponentNames::STOCK_BUY_COUNT_LABEL);
+
+	stockWidget
+		->get<tgui::SpinButton>(UIComponentNames::STOCK_BUY_COUNT_SPIN)
+		->connect(
+		"ValueChanged", 
+		[this, buyCountLabel](tgui::Widget::Ptr widget, const std::string& signalName) {
+			buyCountLabel->setText(std::to_string(static_cast<int>(widget->cast<tgui::SpinButton>()->getValue())));
+		}
+	);
 }
 
 void StockWidgetList::updateStockWidget(const std::string& name)
@@ -144,4 +169,21 @@ tgui::Group::ConstPtr StockWidgetList::getStockWidget(const std::string &name) c
 	assert(widgetData.has_value() && "Trying to get non-existent stock widget");
 
 	return widgetData->widgetPtr;
+}
+
+std::optional<StockWidgetList::StockWidgetData> StockWidgetList::getLastWidgetData()
+{
+	if (previousWidgetName.empty())
+	{
+		return {};
+	}
+
+	return tryGetStockWidgetData(previousWidgetName);
+}
+
+std::optional<tgui::Group::Ptr> StockWidgetList::getLastWidget()
+{
+	std::optional<StockWidgetData> widgetDataOpt = getLastWidgetData();
+
+	return widgetDataOpt.has_value() ? widgetDataOpt->widgetPtr : std::optional<tgui::Group::Ptr>();
 }
