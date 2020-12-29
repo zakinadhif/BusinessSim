@@ -37,4 +37,7 @@ private:
 
 	tgui::Container::Ptr parentContainer;
 	std::unordered_map<std::string, StockWidgetData> stockWidgetDatas;
+
+	// Need this to calculate widget position based on previous widget
+	std::string previousWidgetName = "";
 };

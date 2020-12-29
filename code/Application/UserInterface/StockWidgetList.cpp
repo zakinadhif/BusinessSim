@@ -5,7 +5,7 @@
 #include "Application/UserInterface/UIComponentNames.hpp"
 #include "Application/UserInterface/UIFormPaths.hpp"
 
-#include <TGUI/Widgets/Label.hpp>
+#include <TGUI/TGUI.hpp>
 #include <spdlog/fmt/bundled/core.h>
 
 StockWidgetList::StockWidgetData::StockWidgetData(tgui::Group::Ptr widget, const PriceSimulator& stockSimulator)
@@ -21,12 +21,26 @@ StockWidgetList::StockWidgetList(tgui::Container::Ptr parentContainer)
 
 void StockWidgetList::createStockWidget(const PriceSimulator& stock, const std::string& name)
 {
-	auto stockWidget = tgui::Group::create();
+	assert(name != "" && "Stock Widget name can't be empty");
+
+	std::string yOffset = "0";
+
+	if (!previousWidgetName.empty())
+	{
+		yOffset = std::string() + previousWidgetName + ".bottom";
+	}
+
+	tgui::Group::Ptr stockWidget = tgui::Group::create({"100%", "75"});
 	parentContainer->add(stockWidget, name);
+
+	stockWidget->setPosition("0", yOffset);
 
 	stockWidget->loadWidgetsFromFile(UIFormPaths::STOCK_ITEM);
 
 	stockWidgetDatas.emplace(std::make_pair(name, StockWidgetData { stockWidget, stock }));
+
+
+	previousWidgetName = name;  
 }
 
 void StockWidgetList::removeStockWidget(const std::string& name)
