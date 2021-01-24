@@ -2,8 +2,7 @@
 build/*
 debug/*
 bin/*
-<<<<<<< HEAD
+.cache
+Debug
 .clangd
-=======
->>>>>>> f011584... ignore compile_commands.json
 compile_commands.json
