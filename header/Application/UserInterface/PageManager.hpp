@@ -18,12 +18,15 @@ public:
 	void reloadPages();
 
 	void setActivePage(const std::string& name);
+	tgui::Group::Ptr getActivePage();
 	void clearActivePage();
 
 	~PageManager();
 
 private:
-	std::vector<tgui::Group::Ptr> pages;
-	std::vector<std::string> pageFilepaths;
-	tgui::Container::Ptr pageContainer;
+	typedef std::tuple<std::string, tgui::Group::Ptr> FormpathPagePair;
+
+	tgui::Group::Ptr m_activePage;
+	std::unordered_map<std::string, FormpathPagePair> m_pages;
+	tgui::Container::Ptr m_pageContainer;
 };

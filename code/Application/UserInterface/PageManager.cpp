@@ -3,43 +3,31 @@
 #include <spdlog/spdlog.h>
 #include <memory>
 #include <string_view>
+#include <tuple>
 
 PageManager::PageManager(tgui::Container::Ptr pageContainer)
-	: pageContainer(pageContainer)
+	: m_pageContainer(pageContainer)
 {
-	spdlog::info("PageManager: created with {} as page container", static_cast<void*>(pageContainer.get()));
+
 }
 
 tgui::Group::Ptr PageManager::getPage(const std::string &name)
 {
-	for (auto& page : pages)
-	{
-		if (std::static_pointer_cast<tgui::Widget>(page)->getWidgetName()
-				== name)
-		{
-			return page;
-		}
-	}
-	
-	return {};
+	auto& [formpath, pagePtr] = m_pages.at(name);
+	return pagePtr;
 }
 
 void PageManager::addPage(const std::string& filepath, const std::string& name, bool setAsActive)
 {
-	if (name == "")
-	{
-		throw "Page name can't be empty";
-	}
+	assert(filepath != "");
 
 	auto page = tgui::Group::create();
 
 	// load widgets from file, and save the filepath for later use
 	page->loadWidgetsFromFile(filepath);
-	pageFilepaths.push_back(filepath);
-
-	// adding it to page container and saving the pointer
-	pageContainer->add(page, name);
-	pages.push_back(page);
+	m_pageContainer->add(page, name);
+	
+	m_pages.emplace(name, std::make_tuple(filepath, page));
 
 	if (setAsActive)
 	{
@@ -55,88 +43,63 @@ void PageManager::addPage(const std::string& filepath, const std::string& name, 
 
 void PageManager::removePage(const std::string& name)
 {
-	bool found = false;
-	for (std::size_t i = 0; i < pages.size(); ++i)
-	{
-		auto& page = pages[i];
+	auto& [formpath, pagePtr] = m_pages.at(name);
 
-		sf::String pageName = std::static_pointer_cast<tgui::Widget>(page)->getWidgetName();
-
-		// remove page with the same name as @parameter name
-		if (pageName == name)
-		{
-			// remove the removed page from pages and pageFilepaths index, then remove the page
-			pages.erase(pages.begin() + i);
-			pageFilepaths.erase(pageFilepaths.begin() + i);
-			pageContainer->remove(page);
-
-			found = true;
-		}
-	}
-	
-	if (!found)
-	{
-		throw "Page \"" + name + "\" can't be removed: No such page exist.";
-	}
+	m_pageContainer->remove(pagePtr);
+	m_pages.erase(name);
 
 	spdlog::info("PageManager: Page \"{}\" was removed.", name);
 }
 
 void PageManager::clearPages()
 {
-	pageContainer->removeAllWidgets();
-	pages.clear();
-	pageFilepaths.clear();
+	m_pageContainer->removeAllWidgets();
+	m_pages.clear();
 
 	spdlog::info("PageManager: Pages cleared.");
 }
 
 void PageManager::setActivePage(const std::string &name)
 {
-	bool found = false;
-	for (auto& page : pages)
-	{
-		sf::String pageName = std::static_pointer_cast<tgui::Widget>(page)->getWidgetName();
+	auto& [formpath, pagePtr] = m_pages.at(name);
 
-		if (pageName == name)
-		{
-			page->setVisible(true);
-			found = true;
-		}
-		else
-		{
-			page->setVisible(false);
-		}
+	{
+		auto currentActivePage = getActivePage();
+		if (currentActivePage.get())
+			currentActivePage->setVisible(false);
 	}
 
-	if (!found)
-	{
-		throw "Page \"" + name + "\" can't be activated: No such page exist.";
-	}
+	pagePtr->setVisible(true);
+	m_activePage = pagePtr;
 
-	spdlog::info("PageManager: Page \"{}\" is setted active", name);
+	spdlog::info("PageManager: Page \"{}\" is activated", name);
+}
+
+tgui::Group::Ptr PageManager::getActivePage()
+{
+	return m_activePage;
 }
 
 void PageManager::clearActivePage()
 {
-	for (auto& page : pages)
-	{
-		page->setVisible(false);
-	}
-	
+	auto currentActivePage = getActivePage();
+	currentActivePage->setVisible(false);
+
+	m_activePage = nullptr;
+
 	spdlog::info("PageManager: Active page is set to none.");
 }
 
 void PageManager::reloadPages()
 {
-	for (std::size_t i = 0; i < pages.size(); ++i)
+	for (auto& [pageName, formpathPagePair] : m_pages)
 	{
-		auto& page = pages[i];
-		const std::string& pageName = std::static_pointer_cast<tgui::Widget>(page)->getWidgetName();
-		spdlog::info("PageManager: Reloading page \"{}\" ...", pageName);
+		auto& [formpath, pagePtr] = formpathPagePair;
 
-		page->removeAllWidgets();
-		page->loadWidgetsFromFile(pageFilepaths[i]);
+		spdlog::info("PageManager: Reloading page \"{}\" ...", formpath);
+
+		pagePtr->removeAllWidgets();
+		pagePtr->loadWidgetsFromFile(formpath);
 	}
 
 	spdlog::info("PageManager: All pages has been reloaded.");
