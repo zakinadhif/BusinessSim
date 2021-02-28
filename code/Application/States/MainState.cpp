@@ -7,13 +7,13 @@
 #include <TGUI/Widgets/Group.hpp>
 
 MainState::MainState(GameStateManager& gameStateManager, tgui::Gui& gui)
-	: GameState(gameStateManager), gui(gui)
+	: GameState{gameStateManager} 
+	, gui{gui}
+	, container{tgui::Group::create()}
+	, userInterface{container}
+	, gameLogic{userInterface}
 {
-	auto uiContainer = tgui::Group::create();
-	gui.add(uiContainer, "mainUi");
-
-	userInterface = new UserInterface(uiContainer);
-	gameLogic = new GameLogic(*userInterface);
+	gui.add(container, "mainUi");
 }
 
 void MainState::handleEvent(sf::Event event)
@@ -33,6 +33,4 @@ void MainState::draw(sf::RenderTarget &target) const
 
 MainState::~MainState()
 {
-	delete userInterface;
-	delete gameLogic;
 }

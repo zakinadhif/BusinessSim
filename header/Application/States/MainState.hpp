@@ -3,12 +3,13 @@
 #include "Application/UserInterface/UserInterface.hpp"
 #include "Application/PlayerStats.hpp"
 
+#include "Application/GameLogic.hpp"
+
 #include "Engine/GameState.hpp"
 
 #include <TGUI/TGUI.hpp>
 
 class GameStateManager;
-class GameLogic;
 
 class MainState : public GameState
 {
@@ -23,6 +24,7 @@ public:
 
 private:
 	tgui::Gui& gui;
-	UserInterface* userInterface;
-	GameLogic* gameLogic;
+	tgui::Group::Ptr container;
+	UserInterface userInterface;
+	GameLogic gameLogic;
 };
