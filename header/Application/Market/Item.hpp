@@ -13,7 +13,7 @@ public:
 	
 	void step();
 	
-	std::string getName() const;
+	const std::string& getName() const;
 	void setName(const std::string& name);
 
 	float getPrice() const;

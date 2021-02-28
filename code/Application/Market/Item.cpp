@@ -20,7 +20,7 @@ void Item::step()
 	priceSimulator.step();
 }
 
-std::string Item::getName() const
+const std::string& Item::getName() const
 {
 	return name;
 }
