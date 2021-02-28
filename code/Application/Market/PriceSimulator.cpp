@@ -2,6 +2,7 @@
 #include "Application/Market/MarketDetails.hpp"
 #include "Application/Market/PriceQuote.hpp"
 
+#include <random>
 #include <spdlog/spdlog.h>
 
 #include <cmath>
@@ -16,7 +17,7 @@ PriceSimulator::PriceSimulator(float initialPrice, MarketDetails marketDetails, 
 
 void PriceSimulator::step()
 {
-	float growth = std::exp(drift + volatility * boxMullerRandom());
+	float growth = std::exp(drift + volatility * stdRandom());
 	price = price * std::pow(growth, 1 / static_cast<float>(tradingPeriod));
 
 	++stepCount;
@@ -72,4 +73,12 @@ float PriceSimulator::boxMullerRandom()
 	}
 
 	return boxMullerRandom();
+}
+
+float PriceSimulator::stdRandom()
+{
+	static std::normal_distribution<float> normalDist;
+	std::mt19937& randomEngine = random.getRandomEngine();
+
+	return normalDist(randomEngine);
 }

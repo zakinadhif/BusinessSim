@@ -37,4 +37,5 @@ private:
 	Random random;
 	
 	float boxMullerRandom();
+	float stdRandom();
 };
