@@ -23,25 +23,14 @@ public:
 	void updateStockWidgets();
 
 private:
-	struct StockWidgetData
-	{
-		StockWidgetData(tgui::Group::Ptr widget, const PriceSimulator& data);
-
-		tgui::Group::Ptr widgetPtr;
-		const PriceSimulator& data;
-	};
+	typedef std::tuple<const PriceSimulator&, tgui::Group::Ptr> DataWidgetPair;
 
 	void configureStockWidgetProperties(const std::string& name);
 	void updateStockWidget(const std::string& name);
-	std::optional<StockWidgetData> tryGetStockWidgetData(const std::string& name);
-	std::optional<StockWidgetData> tryGetStockWidgetData(const std::string& name) const;
 
-	std::optional<StockWidgetData> getLastWidgetData();
-	std::optional<tgui::Group::Ptr> getLastWidget();
-
-	tgui::Container::Ptr parentContainer;
-	std::unordered_map<std::string, StockWidgetData> stockWidgetDatas;
+	tgui::Container::Ptr m_container;
+	std::unordered_map<std::string, DataWidgetPair> m_dataStockWidgets;
 
 	// Need this to calculate widget position based on previous widget
-	std::string previousWidgetName = "";
+	tgui::Group::Ptr previousWidget;
 };

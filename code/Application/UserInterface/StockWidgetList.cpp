@@ -8,14 +8,8 @@
 #include <TGUI/TGUI.hpp>
 #include <spdlog/fmt/bundled/core.h>
 
-StockWidgetList::StockWidgetData::StockWidgetData(tgui::Group::Ptr widget, const PriceSimulator& stockSimulator)
-	: widgetPtr(widget), data(stockSimulator)
-{
-
-}
-
 StockWidgetList::StockWidgetList(tgui::Container::Ptr parentContainer)
-	: parentContainer(parentContainer)
+	: m_container(parentContainer)
 {
 }
 
@@ -23,69 +17,62 @@ void StockWidgetList::createStockWidget(const PriceSimulator& stock, const std::
 {
 	assert(name != "" && "Stock Widget name can't be empty");
 
-	std::string yOffset = "0";
-
-	if (!previousWidgetName.empty())
-	{
-		yOffset = std::string() + previousWidgetName + ".bottom";
-	}
-
 	tgui::Group::Ptr stockWidget = tgui::Group::create({"100%", "75"});
-	parentContainer->add(stockWidget, name);
+	m_container->add(stockWidget, name);
 
-	stockWidget->setPosition("0", yOffset);
+	if (previousWidget.get())
+	{
+		stockWidget->setPosition(0, tgui::bindBottom(previousWidget));
+	}
+	else
+	{
+		stockWidget->setPosition(0,0);
+	}
 
 	stockWidget->loadWidgetsFromFile(UIFormPaths::STOCK_ITEM);
 
-	stockWidgetDatas.emplace(std::make_pair(name, StockWidgetData { stockWidget, stock }));
+	m_dataStockWidgets.emplace(std::make_pair(name, std::forward_as_tuple(stock, stockWidget)));
 
 	configureStockWidgetProperties(name);
 
-	previousWidgetName = name;  
+	previousWidget = stockWidget;  
 }
 
 void StockWidgetList::removeStockWidget(const std::string& name)
 {
-	auto widgetDataOpt = tryGetStockWidgetData(name);
-	if (!widgetDataOpt.has_value()) return;
-
-	parentContainer->remove(widgetDataOpt->widgetPtr);
-	stockWidgetDatas.erase(name);
+	const auto& [stockData, stockWidget] = m_dataStockWidgets.at(name);	
+	
+	m_container->remove(stockWidget);
+	m_dataStockWidgets.erase(name);
 }
 
 void StockWidgetList::clearList()
 {
-	for (auto& widgetData : stockWidgetDatas)
-	{
-		parentContainer->remove(widgetData.second.widgetPtr);
-	}
-
-	stockWidgetDatas.clear();
+	m_container->removeAllWidgets();
+	m_dataStockWidgets.clear();
 }
 
 void StockWidgetList::reloadStockWidgets()
 {
-	for (auto& widgetData : stockWidgetDatas)
+	for (const auto& [stockName, stockWidgetPair] : m_dataStockWidgets)
 	{
-		parentContainer->add(widgetData.second.widgetPtr);
+		const auto& [stockData, stockWidget] = stockWidgetPair;
+		m_container->add(stockWidget);
 	}
 }
 
 void StockWidgetList::updateStockWidgets()
 {
-	for (auto& widgetData : stockWidgetDatas)
+	for (const auto& [widgetName, dataWidgetPair] : m_dataStockWidgets)
 	{
-		updateStockWidget(widgetData.first);
+		updateStockWidget(widgetName);
 	}
 }
 
 void StockWidgetList::configureStockWidgetProperties(const std::string& name)
 {
-	auto widgetDataOpt = tryGetStockWidgetData(name);
-	if (!widgetDataOpt.has_value()) return;
+	auto& [stockData, stockWidget] = m_dataStockWidgets.at(name);
 
-	auto stockWidget = widgetDataOpt->widgetPtr;
-	
 	stockWidget
 		->get<tgui::Label>(UIComponentNames::STOCK_COMPANY_NAME)
 		->setText(name);
@@ -105,85 +92,19 @@ void StockWidgetList::configureStockWidgetProperties(const std::string& name)
 
 void StockWidgetList::updateStockWidget(const std::string& name)
 {
-	auto widgetDataOpt = tryGetStockWidgetData(name);
-	if (!widgetDataOpt.has_value()) return;
-
-	const PriceSimulator& stockData = widgetDataOpt->data;
-	tgui::Group::Ptr stockWidget = widgetDataOpt->widgetPtr;
-
-	if (stockData.getPriceQuotes().size() != 0)
-	{
-		std::size_t latestIndex = stockData.getPriceQuotes().size() - 1;
-		const PriceQuote& latestQuote = 
-			stockData.getPriceQuotes().at(latestIndex);
-
-		stockWidget
-			->get<tgui::Label>(UIComponentNames::STOCK_OPEN_PRICE_LABEL)
-			->setText(fmt::format("{:.2f} E", latestQuote.open));
-
-		stockWidget
-			->get<tgui::Label>(UIComponentNames::STOCK_CLOSE_PRICE_LABEL)
-			->setText(fmt::format("{:.2f} E", latestQuote.close));
-		
-		stockWidget
-			->get<tgui::Label>(UIComponentNames::STOCK_HIGH_PRICE_LABEL)
-			->setText(fmt::format("{:.2f} E", latestQuote.high));
-		
-		stockWidget
-			->get<tgui::Label>(UIComponentNames::STOCK_LOW_PRICE_LABEL)
-			->setText(fmt::format("{:.2f} E", latestQuote.low));
-	}
+	auto& [stockData, stockWidget] = m_dataStockWidgets.at(name);
 
 	stockWidget
 		->get<tgui::Label>(UIComponentNames::STOCK_LAST_PRICE_LABEL)
 		->setText(fmt::format("{:.2f} E", stockData.getPrice()));
 }
 
-std::optional<StockWidgetList::StockWidgetData> StockWidgetList::tryGetStockWidgetData(const std::string& name)
-{
-	auto stockWidgetDataIter = stockWidgetDatas.find(name);
-
-	return stockWidgetDataIter == stockWidgetDatas.end() ? 
-		std::optional<StockWidgetData>() : std::make_optional(stockWidgetDataIter->second);
-}
-
-std::optional<StockWidgetList::StockWidgetData> StockWidgetList::tryGetStockWidgetData(const std::string& name) const
-{
-	auto stockWidgetDataIter = stockWidgetDatas.find(name);
-
-	return stockWidgetDataIter == stockWidgetDatas.end() ? 
-		std::optional<StockWidgetData>() : std::make_optional(stockWidgetDataIter->second);
-}
-
 tgui::Group::Ptr StockWidgetList::getStockWidget(const std::string &name)
 {
-	std::optional<StockWidgetData> widgetData = tryGetStockWidgetData(name);
-	assert(widgetData.has_value() && "Trying to get non-existent stock widget");
-	
-	return widgetData->widgetPtr;
+	return std::get<1>(m_dataStockWidgets.at(name));
 }
 
 tgui::Group::ConstPtr StockWidgetList::getStockWidget(const std::string &name) const
 {
-	std::optional<StockWidgetData> widgetData = tryGetStockWidgetData(name);
-	assert(widgetData.has_value() && "Trying to get non-existent stock widget");
-
-	return widgetData->widgetPtr;
-}
-
-std::optional<StockWidgetList::StockWidgetData> StockWidgetList::getLastWidgetData()
-{
-	if (previousWidgetName.empty())
-	{
-		return {};
-	}
-
-	return tryGetStockWidgetData(previousWidgetName);
-}
-
-std::optional<tgui::Group::Ptr> StockWidgetList::getLastWidget()
-{
-	std::optional<StockWidgetData> widgetDataOpt = getLastWidgetData();
-
-	return widgetDataOpt.has_value() ? widgetDataOpt->widgetPtr : std::optional<tgui::Group::Ptr>();
+	return std::get<1>(m_dataStockWidgets.at(name));
 }
