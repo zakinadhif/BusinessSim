@@ -35,9 +35,9 @@ Panel.stockItem {
             textcolordisabled = #7D7D7D;
             textcolordown = black;
             textcolorhover = black;
-            texture = "/home/xni/Workspace/C++/Business_Sim/assets/Sell Button.png" Part(0, 0, 32, 13);
+            texture = "assets/Sell Button.png" Part(0, 0, 32, 13);
             texturedisabled = None;
-            texturedown = "/home/xni/Workspace/C++/Business_Sim/assets/Sell Button.png" Part(0, 13, 32, 13);
+            texturedown = "assets/Sell Button.png" Part(0, 13, 32, 13);
             texturefocused = None;
             texturehover = None;
         }
@@ -63,9 +63,9 @@ Panel.stockItem {
             textcolordisabled = #7D7D7D;
             textcolordown = black;
             textcolorhover = black;
-            texture = "/home/xni/Workspace/C++/Business_Sim/assets/Buy Button.png" Part(0, 0, 32, 13);
+            texture = "assets/Buy Button.png" Part(0, 0, 32, 13);
             texturedisabled = None;
-            texturedown = "/home/xni/Workspace/C++/Business_Sim/assets/Buy Button.png" Part(0, 13, 32, 13);
+            texturedown = "assets/Buy Button.png" Part(0, 13, 32, 13);
             texturefocused = None;
             texturehover = None;
         }

@@ -38,7 +38,7 @@ Panel.bottomPanel {
                 textcolordisabled = #7D7D7D;
                 textcolordown = black;
                 textcolorhover = black;
-                texture = "/home/xni/Workspace/C++/Business_Sim/assets/Candle-Stick-Chart-slim.png";
+                texture = "assets/Candle-Stick-Chart-slim.png";
                 texturedisabled = None;
                 texturedown = None;
                 texturefocused = None;
@@ -72,7 +72,7 @@ Panel.bottomPanel {
                 textcolordisabled = #7D7D7D;
                 textcolordown = black;
                 textcolorhover = black;
-                texture = "/home/xni/Workspace/C++/Business_Sim/assets/Crates-Thin-Outline-slim.png";
+                texture = "assets/Crates-Thin-Outline-slim.png";
                 texturedisabled = None;
                 texturedown = None;
                 texturefocused = None;
@@ -106,7 +106,7 @@ Panel.bottomPanel {
                 textcolordisabled = #7D7D7D;
                 textcolordown = black;
                 textcolorhover = black;
-                texture = "/home/xni/Workspace/C++/Business_Sim/assets/Member-Circle-No-Outline-slim.png";
+                texture = "assets/Member-Circle-No-Outline-slim.png";
                 texturedisabled = None;
                 texturedown = None;
                 texturefocused = None;
