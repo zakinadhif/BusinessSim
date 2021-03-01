@@ -17,9 +17,12 @@ public:
 	void addStockWidget(const PriceSimulator& stock, const std::string& name);
 	void updateStockWidgetList();
 
-	~UserInterface();
 private:
-	tgui::Group::Ptr uiContainer;
-	StockWidgetList* stockWidgetList;
-	PageManager* pageManager;
+	tgui::Group::Ptr m_UIContainer;
+
+	tgui::Group::Ptr m_pageContainer;
+	tgui::Group::Ptr m_stockWidgetContainer;
+
+	PageManager m_pageManager;
+	StockWidgetList m_stockWidgetList;
 };
