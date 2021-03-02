@@ -52,7 +52,7 @@ void GameLogic::initUILogics()
 	auto uiContainer = ui.getUIContainer();
 	
 	tgui::Button::Ptr stepGameButton = uiContainer->get<tgui::Button>(STEP_BUTTON);
-	stepGameButton->connect("pressed", [this](){ stepGame(); });
+	stepGameButton->onPress([this](){ stepGame(); });
 
 	spdlog::info("GameLogic: initialization complete.");
 

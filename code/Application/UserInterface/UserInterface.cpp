@@ -26,8 +26,7 @@ UserInterface::UserInterface(tgui::Group::Ptr container)
 	
 	auto reloadPageButton = tgui::Button::create("R");
 	reloadPageButton->setPosition("50% - width / 2", "0");
-	reloadPageButton->connect(
-		"pressed",
+	reloadPageButton->onPress(
 		[this]()
 		{
 			m_pageManager.reloadPages();
@@ -42,13 +41,13 @@ UserInterface::UserInterface(tgui::Group::Ptr container)
 	m_pageManager.setActivePage("Empty Page");
 
 	auto tradingButton = m_UIContainer->get(UIComponentNames::GOTO_TRADING_MENU_BUTTON);
-	if (tradingButton) tradingButton->connect("pressed", [this](){m_pageManager.setActivePage("Trading Menu");});
+	if (tradingButton) tradingButton->getSignal("Pressed").connect([this](){m_pageManager.setActivePage("Trading Menu");});
 
 	auto socialButton = m_UIContainer->get(UIComponentNames::GOTO_SOCIAL_MENU_BUTTON);
-	if (socialButton) socialButton->connect("pressed", [this](){m_pageManager.setActivePage("Social Menu");});
+	if (socialButton) socialButton->getSignal("Pressed").connect([this](){m_pageManager.setActivePage("Social Menu");});
 
 	auto commoditiesButton = m_UIContainer->get(UIComponentNames::GOTO_COMMODITIES_MENU_BUTTON);
-	if (commoditiesButton) commoditiesButton->connect("pressed", [this](){m_pageManager.setActivePage("Commodities Menu");});
+	if (commoditiesButton) commoditiesButton->getSignal("Pressed").connect([this](){m_pageManager.setActivePage("Commodities Menu");});
 
 	auto tradingPage = m_pageManager.getPage("Trading Menu");
 	tradingPage->add(m_stockWidgetContainer);

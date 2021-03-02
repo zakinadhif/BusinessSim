@@ -25,7 +25,7 @@ void BusinessStrategy::handleEvent(sf::Event event)
 	{
 		sf::Vector2f windowSize = static_cast<sf::Vector2f>(window.getSize());
 		window.setView(sf::View({0, 0, windowSize.x, windowSize.y}));
-		gui.setView(sf::View({0,0,windowSize.x,windowSize.y}));
+		gui.setAbsoluteView({0,0,windowSize.x,windowSize.y});
 		break;
 	}
 	case sf::Event::Closed:

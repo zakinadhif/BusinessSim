@@ -82,10 +82,9 @@ void StockWidgetList::configureStockWidgetProperties(const std::string& name)
 
 	stockWidget
 		->get<tgui::SpinButton>(UIComponentNames::STOCK_BUY_COUNT_SPIN)
-		->connect(
-		"ValueChanged", 
-		[this, buyCountLabel](tgui::Widget::Ptr widget, const std::string& signalName) {
-			buyCountLabel->setText(std::to_string(static_cast<int>(widget->cast<tgui::SpinButton>()->getValue())));
+		->onValueChange( 
+		[this, buyCountLabel](float value) {
+			buyCountLabel->setText(tgui::String::fromNumber(value));
 		}
 	);
 }
