@@ -6,10 +6,10 @@ Panel.bottomPanel {
     Size = (100%, min(80, 15%));
 
     Renderer {
-        backgroundcolor = #5A3921;
-        bordercolor = black;
-        borders = (0, 4, 0, 0);
-        texturebackground = None;
+        BackgroundColor = #5A3921;
+        BorderColor = black;
+        Borders = (0, 4, 0, 0);
+        TextureBackground = None;
     }
 
     Group.buttonPlace1 {
@@ -24,25 +24,25 @@ Panel.bottomPanel {
             TextSize = 13;
 
             Renderer {
-                backgroundcolor = transparent;
-                backgroundcolordisabled = #E6E6E6;
-                backgroundcolordown = #EBEBEB;
-                backgroundcolorhover = white;
-                bordercolor = #3C3C3C;
-                bordercolordisabled = #7D7D7D;
-                bordercolordown = black;
-                bordercolorfocused = #1E1EB4;
-                bordercolorhover = black;
-                borders = (0, 0, 0, 0);
-                textcolor = white;
-                textcolordisabled = #7D7D7D;
-                textcolordown = black;
-                textcolorhover = black;
-                texture = "assets/Candle-Stick-Chart-slim.png";
-                texturedisabled = None;
-                texturedown = None;
-                texturefocused = None;
-                texturehover = None;
+                BackgroundColor = transparent;
+                BackgroundColorDisabled = #E6E6E6;
+                BackgroundColorDown = #EBEBEB;
+                BackgroundColorHover = white;
+                BorderColor = #3C3C3C;
+                BorderColorDisabled = #7D7D7D;
+                BorderColorDown = black;
+                BorderColorFocused = #1E1EB4;
+                BorderColorHover = black;
+                Borders = (0, 0, 0, 0);
+                TextColor = white;
+                TextColorDisabled = #7D7D7D;
+                TextColorDown = black;
+                TextColorHover = black;
+                Texture = "assets/Candle-Stick-Chart-slim.png";
+                TextureDisabled = None;
+                TextureDown = None;
+                TextureFocused = None;
+                TextureHover = None;
             }
         }
     }
@@ -58,25 +58,25 @@ Panel.bottomPanel {
             TextSize = 13;
 
             Renderer {
-                backgroundcolor = transparent;
-                backgroundcolordisabled = #E6E6E6;
-                backgroundcolordown = #EBEBEB;
-                backgroundcolorhover = white;
-                bordercolor = #3C3C3C;
-                bordercolordisabled = #7D7D7D;
-                bordercolordown = black;
-                bordercolorfocused = #1E1EB4;
-                bordercolorhover = black;
-                borders = (0, 0, 0, 0);
-                textcolor = white;
-                textcolordisabled = #7D7D7D;
-                textcolordown = black;
-                textcolorhover = black;
-                texture = "assets/Crates-Thin-Outline-slim.png";
-                texturedisabled = None;
-                texturedown = None;
-                texturefocused = None;
-                texturehover = None;
+                BackgroundColor = transparent;
+                BackgroundColorDisabled = #E6E6E6;
+                BackgroundColorDown = #EBEBEB;
+                BackgroundColorHover = white;
+                BorderColor = #3C3C3C;
+                BorderColorDisabled = #7D7D7D;
+                BorderColorDown = black;
+                BorderColorFocused = #1E1EB4;
+                BorderColorHover = black;
+                Borders = (0, 0, 0, 0);
+                TextColor = white;
+                TextColorDisabled = #7D7D7D;
+                TextColorDown = black;
+                TextColorHover = black;
+                Texture = "assets/Crates-Thin-Outline-slim.png";
+                TextureDisabled = None;
+                TextureDown = None;
+                TextureFocused = None;
+                TextureHover = None;
             }
         }
     }
@@ -92,25 +92,25 @@ Panel.bottomPanel {
             TextSize = 13;
 
             Renderer {
-                backgroundcolor = transparent;
-                backgroundcolordisabled = #E6E6E6;
-                backgroundcolordown = #EBEBEB;
-                backgroundcolorhover = white;
-                bordercolor = #3C3C3C;
-                bordercolordisabled = #7D7D7D;
-                bordercolordown = black;
-                bordercolorfocused = #1E1EB4;
-                bordercolorhover = black;
-                borders = (0, 0, 0, 0);
-                textcolor = #3C3C3C;
-                textcolordisabled = #7D7D7D;
-                textcolordown = black;
-                textcolorhover = black;
-                texture = "assets/Member-Circle-No-Outline-slim.png";
-                texturedisabled = None;
-                texturedown = None;
-                texturefocused = None;
-                texturehover = None;
+                BackgroundColor = transparent;
+                BackgroundColorDisabled = #E6E6E6;
+                BackgroundColorDown = #EBEBEB;
+                BackgroundColorHover = white;
+                BorderColor = #3C3C3C;
+                BorderColorDisabled = #7D7D7D;
+                BorderColorDown = black;
+                BorderColorFocused = #1E1EB4;
+                BorderColorHover = black;
+                Borders = (0, 0, 0, 0);
+                TextColor = #3C3C3C;
+                TextColorDisabled = #7D7D7D;
+                TextColorDown = black;
+                TextColorHover = black;
+                Texture = "assets/Member-Circle-No-Outline-slim.png";
+                TextureDisabled = None;
+                TextureDown = None;
+                TextureFocused = None;
+                TextureHover = None;
             }
         }
     }

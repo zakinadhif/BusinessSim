@@ -2,10 +2,10 @@ Panel.topPanel {
     Size = (100%, min(64, 16%));
 
     Renderer {
-        backgroundcolor = #5A3921;
-        bordercolor = black;
-        borders = (0, 0, 0, 4);
-        texturebackground = None;
+        BackgroundColor = #5A3921;
+        BorderColor = black;
+        Borders = (0, 0, 0, 4);
+        TextureBackground = None;
     }
 
     Picture.moneyIcon1 {
@@ -13,8 +13,8 @@ Panel.topPanel {
         Size = (36 * 1.2, 15.75 * 1.2);
 
         Renderer {
-            texture = "assets/Money-E-Single-slim.png";
-            transparenttexture = false;
+            Texture = "assets/Money-E-Single-slim.png";
+            TransparentTexture = false;
         }
     }
 
@@ -23,8 +23,8 @@ Panel.topPanel {
         Size = (moneyicon1.width, moneyicon1.height);
 
         Renderer {
-            texture = "assets/Yellow-Ticket-slim.png";
-            transparenttexture = false;
+            Texture = "assets/Yellow-Ticket-slim.png";
+            TransparentTexture = false;
         }
     }
 
@@ -37,11 +37,11 @@ Panel.topPanel {
         VerticalAlignment = Center;
 
         Renderer {
-            backgroundcolor = transparent;
-            bordercolor = #3C3C3C;
-            borders = (0, 0, 0, 0);
-            textcolor = white;
-            texturebackground = None;
+            BackgroundColor = transparent;
+            BorderColor = #3C3C3C;
+            Borders = (0, 0, 0, 0);
+            TextColor = white;
+            TextureBackground = None;
         }
     }
 
@@ -54,11 +54,11 @@ Panel.topPanel {
         VerticalAlignment = Center;
 
         Renderer {
-            backgroundcolor = transparent;
-            bordercolor = #3C3C3C;
-            borders = (0, 0, 0, 0);
-            textcolor = white;
-            texturebackground = None;
+            BackgroundColor = transparent;
+            BorderColor = #3C3C3C;
+            Borders = (0, 0, 0, 0);
+            TextColor = white;
+            TextureBackground = None;
         }
     }
 
@@ -68,25 +68,25 @@ Panel.topPanel {
         TextSize = 13;
 
         Renderer {
-            backgroundcolor = #F5F5F5;
-            backgroundcolordisabled = #E6E6E6;
-            backgroundcolordown = #EBEBEB;
-            backgroundcolorhover = white;
-            bordercolor = #3C3C3C;
-            bordercolordisabled = #7D7D7D;
-            bordercolordown = black;
-            bordercolorfocused = #1E1EB4;
-            bordercolorhover = black;
-            borders = (1, 1, 1, 1);
-            textcolor = #3C3C3C;
-            textcolordisabled = #7D7D7D;
-            textcolordown = black;
-            textcolorhover = black;
-            texture = None;
-            texturedisabled = None;
-            texturedown = None;
-            texturefocused = None;
-            texturehover = None;
+            BackgroundColor = #F5F5F5;
+            BackgroundColorDisabled = #E6E6E6;
+            BackgroundColorDown = #EBEBEB;
+            BackgroundColorHover = white;
+            BorderColor = #3C3C3C;
+            BorderColorDisabled = #7D7D7D;
+            BorderColorDown = black;
+            BorderColorFocused = #1E1EB4;
+            BorderColorHover = black;
+            Borders = (1, 1, 1, 1);
+            TextColor = #3C3C3C;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = black;
+            TextColorHover = black;
+            Texture = None;
+            TextureDisabled = None;
+            TextureDown = None;
+            TextureFocused = None;
+            TextureHover = None;
         }
     }
 
@@ -96,25 +96,25 @@ Panel.topPanel {
         TextSize = 13;
 
         Renderer {
-            backgroundcolor = #F5F5F5;
-            backgroundcolordisabled = #E6E6E6;
-            backgroundcolordown = #EBEBEB;
-            backgroundcolorhover = white;
-            bordercolor = #3C3C3C;
-            bordercolordisabled = #7D7D7D;
-            bordercolordown = black;
-            bordercolorfocused = #1E1EB4;
-            bordercolorhover = black;
-            borders = (1, 1, 1, 1);
-            textcolor = #3C3C3C;
-            textcolordisabled = #7D7D7D;
-            textcolordown = black;
-            textcolorhover = black;
-            texture = None;
-            texturedisabled = None;
-            texturedown = None;
-            texturefocused = None;
-            texturehover = None;
+            BackgroundColor = #F5F5F5;
+            BackgroundColorDisabled = #E6E6E6;
+            BackgroundColorDown = #EBEBEB;
+            BackgroundColorHover = white;
+            BorderColor = #3C3C3C;
+            BorderColorDisabled = #7D7D7D;
+            BorderColorDown = black;
+            BorderColorFocused = #1E1EB4;
+            BorderColorHover = black;
+            Borders = (1, 1, 1, 1);
+            TextColor = #3C3C3C;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = black;
+            TextColorHover = black;
+            Texture = None;
+            TextureDisabled = None;
+            TextureDown = None;
+            TextureFocused = None;
+            TextureHover = None;
         }
     }
 }

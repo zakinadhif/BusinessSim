@@ -1,18 +1,18 @@
 Renderer.1 {
-    backgroundcolor = transparent;
-    bordercolor = #3C3C3C;
-    borders = (0, 0, 0, 0);
-    textcolor = #3C3C3C;
-    texturebackground = None;
+    BackgroundColor = transparent;
+    BorderColor = #3C3C3C;
+    Borders = (0, 0, 0, 0);
+    TextColor = #3C3C3C;
+    TextureBackground = None;
 }
 
 Panel.stockItem {
     Size = (100%, 75);
 
     Renderer {
-        backgroundcolor = #C9905E;
-        bordercolor = black;
-        texturebackground = None;
+        BackgroundColor = #C9905E;
+        BorderColor = black;
+        TextureBackground = None;
     }
 
     Button.sellButton {
@@ -21,25 +21,25 @@ Panel.stockItem {
         TextSize = 13;
 
         Renderer {
-            backgroundcolor = #F5F5F5;
-            backgroundcolordisabled = #E6E6E6;
-            backgroundcolordown = #EBEBEB;
-            backgroundcolorhover = white;
-            bordercolor = #3C3C3C;
-            bordercolordisabled = #7D7D7D;
-            bordercolordown = black;
-            bordercolorfocused = #1E1EB4;
-            bordercolorhover = black;
-            borders = (0, 0, 0, 0);
-            textcolor = #3C3C3C;
-            textcolordisabled = #7D7D7D;
-            textcolordown = black;
-            textcolorhover = black;
-            texture = "assets/Sell Button.png" Part(0, 0, 32, 13);
-            texturedisabled = None;
-            texturedown = "assets/Sell Button.png" Part(0, 13, 32, 13);
-            texturefocused = None;
-            texturehover = None;
+            BackgroundColor = #F5F5F5;
+            BackgroundColorDisabled = #E6E6E6;
+            BackgroundColorDown = #EBEBEB;
+            BackgroundColorHover = white;
+            BorderColor = #3C3C3C;
+            BorderColorDisabled = #7D7D7D;
+            BorderColorDown = black;
+            BorderColorFocused = #1E1EB4;
+            BorderColorHover = black;
+            Borders = (0, 0, 0, 0);
+            TextColor = #3C3C3C;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = black;
+            TextColorHover = black;
+            Texture = "assets/Sell Button.png" Part(0, 0, 32, 13);
+            TextureDisabled = None;
+            TextureDown = "assets/Sell Button.png" Part(0, 13, 32, 13);
+            TextureFocused = None;
+            TextureHover = None;
         }
     }
 
@@ -49,25 +49,25 @@ Panel.stockItem {
         TextSize = 13;
 
         Renderer {
-            backgroundcolor = #F5F5F5;
-            backgroundcolordisabled = #E6E6E6;
-            backgroundcolordown = #EBEBEB;
-            backgroundcolorhover = white;
-            bordercolor = #3C3C3C;
-            bordercolordisabled = #7D7D7D;
-            bordercolordown = black;
-            bordercolorfocused = #1E1EB4;
-            bordercolorhover = black;
-            borders = (0, 0, 0, 0);
-            textcolor = #3C3C3C;
-            textcolordisabled = #7D7D7D;
-            textcolordown = black;
-            textcolorhover = black;
-            texture = "assets/Buy Button.png" Part(0, 0, 32, 13);
-            texturedisabled = None;
-            texturedown = "assets/Buy Button.png" Part(0, 13, 32, 13);
-            texturefocused = None;
-            texturehover = None;
+            BackgroundColor = #F5F5F5;
+            BackgroundColorDisabled = #E6E6E6;
+            BackgroundColorDown = #EBEBEB;
+            BackgroundColorHover = white;
+            BorderColor = #3C3C3C;
+            BorderColorDisabled = #7D7D7D;
+            BorderColorDown = black;
+            BorderColorFocused = #1E1EB4;
+            BorderColorHover = black;
+            Borders = (0, 0, 0, 0);
+            TextColor = #3C3C3C;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = black;
+            TextColorHover = black;
+            Texture = "assets/Buy Button.png" Part(0, 0, 32, 13);
+            TextureDisabled = None;
+            TextureDown = "assets/Buy Button.png" Part(0, 13, 32, 13);
+            TextureFocused = None;
+            TextureHover = None;
         }
     }
 
@@ -80,12 +80,12 @@ Panel.stockItem {
         TextSize = 13;
 
         Renderer {
-            backgroundcolor = transparent;
-            bordercolor = #3C3C3C;
-            borders = (0, 0, 0, 0);
-            textcolor = #3C3C3C;
-            textstyle = Bold;
-            texturebackground = None;
+            BackgroundColor = transparent;
+            BorderColor = #3C3C3C;
+            Borders = (0, 0, 0, 0);
+            TextColor = #3C3C3C;
+            TextStyle = Bold;
+            TextureBackground = None;
         }
     }
 
@@ -98,17 +98,17 @@ Panel.stockItem {
         Value = 0;
 
         Renderer {
-            arrowcolor = #3C3C3C;
-            arrowcolorhover = black;
-            backgroundcolor = #F5F5F5;
-            backgroundcolorhover = white;
-            borderbetweenarrows = 2;
-            bordercolor = black;
-            borders = (1, 1, 1, 1);
-            texturearrowdown = None;
-            texturearrowdownhover = None;
-            texturearrowup = None;
-            texturearrowuphover = None;
+            ArrowColor = #3C3C3C;
+            ArrowColorHover = black;
+            BackgroundColor = #F5F5F5;
+            BackgroundColorHover = white;
+            BorderBetweenArrows = 2;
+            BorderColor = black;
+            Borders = (1, 1, 1, 1);
+            TextureArrowDown = None;
+            TextureArrowDownHover = None;
+            TextureArrowUp = None;
+            TextureArrowUpHover = None;
         }
     }
 
@@ -117,10 +117,10 @@ Panel.stockItem {
         Size = (height * 0.65, buycountspin.height);
 
         Renderer {
-            backgroundcolor = #F5F5F5;
-            bordercolor = black;
-            borders = (1, 1, 0, 1);
-            texturebackground = None;
+            BackgroundColor = #F5F5F5;
+            BorderColor = black;
+            Borders = (1, 1, 0, 1);
+            TextureBackground = None;
         }
 
         Label.buyCountLabel {
@@ -140,9 +140,9 @@ Panel.stockItem {
         Size = ((buycountdisplay.left - 8) - 8, (100% - (companyname.top + companyname.height)) - 8);
 
         Renderer {
-            backgroundcolor = transparent;
-            bordercolor = black;
-            texturebackground = None;
+            BackgroundColor = transparent;
+            BorderColor = black;
+            TextureBackground = None;
         }
 
         Label.lastPriceLabel {
@@ -154,11 +154,11 @@ Panel.stockItem {
             VerticalAlignment = Center;
 
             Renderer {
-                backgroundcolor = #DDDDDD;
-                bordercolor = #3C3C3C;
-                borders = (1, 1, 1, 1);
-                textcolor = #3C3C3C;
-                texturebackground = None;
+                BackgroundColor = #DDDDDD;
+                BorderColor = #3C3C3C;
+                Borders = (1, 1, 1, 1);
+                TextColor = #3C3C3C;
+                TextureBackground = None;
             }
         }
 
@@ -167,10 +167,10 @@ Panel.stockItem {
             Size = ((&.width - lastpricelabel.width) - 8, 100%);
 
             Renderer {
-                backgroundcolor = #F2F2F2;
-                bordercolor = black;
-                borders = (1, 1, 1, 1);
-                texturebackground = None;
+                BackgroundColor = #F2F2F2;
+                BorderColor = black;
+                Borders = (1, 1, 1, 1);
+                TextureBackground = None;
             }
 
             Label.openPriceLabel {
