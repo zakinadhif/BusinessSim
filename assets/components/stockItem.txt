@@ -35,9 +35,9 @@ Panel.stockItem {
             TextColorDisabled = #7D7D7D;
             TextColorDown = black;
             TextColorHover = black;
-            Texture = "assets/Sell Button.png" Part(0, 0, 32, 13);
+            Texture = "assets/Sell Button.png" Part(0, 0, 32, 13) NoSmooth;
             TextureDisabled = None;
-            TextureDown = "assets/Sell Button.png" Part(0, 13, 32, 13);
+            TextureDown = "assets/Sell Button.png" Part(0, 13, 32, 13) NoSmooth;
             TextureFocused = None;
             TextureHover = None;
         }
@@ -63,9 +63,9 @@ Panel.stockItem {
             TextColorDisabled = #7D7D7D;
             TextColorDown = black;
             TextColorHover = black;
-            Texture = "assets/Buy Button.png" Part(0, 0, 32, 13);
+            Texture = "assets/Buy Button.png" Part(0, 0, 32, 13) NoSmooth;
             TextureDisabled = None;
-            TextureDown = "assets/Buy Button.png" Part(0, 13, 32, 13);
+            TextureDown = "assets/Buy Button.png" Part(0, 13, 32, 13) NoSmooth;
             TextureFocused = None;
             TextureHover = None;
         }

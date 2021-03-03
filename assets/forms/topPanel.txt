@@ -13,7 +13,7 @@ Panel.topPanel {
         Size = (36 * 1.2, 15.75 * 1.2);
 
         Renderer {
-            Texture = "assets/Money-E-Single-slim.png";
+            Texture = "assets/Money-E-Single-slim.png" NoSmooth;
             TransparentTexture = false;
         }
     }
@@ -23,7 +23,7 @@ Panel.topPanel {
         Size = (moneyicon1.width, moneyicon1.height);
 
         Renderer {
-            Texture = "assets/Yellow-Ticket-slim.png";
+            Texture = "assets/Yellow-Ticket-slim.png" NoSmooth;
             TransparentTexture = false;
         }
     }
