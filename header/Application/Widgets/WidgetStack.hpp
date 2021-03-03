@@ -13,6 +13,7 @@ public:
 	void removeAllWidgets();
 
 	void reorderWidgets();
+	void reloadWidgets();
 
 private:
 	std::vector<tgui::Widget::Ptr> m_widgets;

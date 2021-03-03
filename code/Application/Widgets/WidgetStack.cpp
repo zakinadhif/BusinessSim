@@ -29,6 +29,16 @@ void WidgetStack::removeWidget(tgui::Widget::Ptr widget)
 	reorderWidgets();
 }
 
+void WidgetStack::reloadWidgets()
+{
+	m_container->removeAllWidgets();
+	
+	for (const auto& widget : m_widgets)
+	{
+		m_container->add(widget, widget->getWidgetName());
+	}
+}
+
 void WidgetStack::reorderWidgets()
 {
 	if (m_widgets.empty()) return;
