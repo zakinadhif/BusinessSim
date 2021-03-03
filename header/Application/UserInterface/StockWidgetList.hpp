@@ -1,8 +1,9 @@
 #pragma once
 
+#include "Application/Widgets/WidgetStack.hpp"
+
 #include <TGUI/Widgets/Panel.hpp>
 
-#include <optional>
 #include <unordered_map>
 
 class PriceSimulator;
@@ -23,14 +24,12 @@ public:
 	void updateStockWidgets();
 
 private:
+	WidgetStack m_widgetStack;
+
 	typedef std::tuple<const PriceSimulator&, tgui::Group::Ptr> DataWidgetPair;
 
 	void configureStockWidgetProperties(const std::string& name);
 	void updateStockWidget(const std::string& name);
 
-	tgui::Container::Ptr m_container;
 	std::unordered_map<std::string, DataWidgetPair> m_dataStockWidgets;
-
-	// Need this to calculate widget position based on previous widget
-	tgui::Group::Ptr previousWidget;
 };

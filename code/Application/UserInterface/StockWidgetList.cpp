@@ -6,10 +6,10 @@
 #include "Application/UserInterface/UIFormPaths.hpp"
 
 #include <TGUI/TGUI.hpp>
-#include <spdlog/fmt/bundled/core.h>
+#include <fmt/format.h>
 
 StockWidgetList::StockWidgetList(tgui::Container::Ptr parentContainer)
-	: m_container(parentContainer)
+	: m_widgetStack(parentContainer)
 {
 }
 
@@ -17,48 +17,32 @@ void StockWidgetList::createStockWidget(const PriceSimulator& stock, const std::
 {
 	assert(name != "" && "Stock Widget name can't be empty");
 
-	tgui::Group::Ptr stockWidget = tgui::Group::create({"100%", "75"});
-	m_container->add(stockWidget, name);
-
-	if (previousWidget.get())
-	{
-		stockWidget->setPosition(0, tgui::bindBottom(previousWidget));
-	}
-	else
-	{
-		stockWidget->setPosition(0,0);
-	}
-
+	auto stockWidget = tgui::Group::create({"100%", "75"});
 	stockWidget->loadWidgetsFromFile(UIFormPaths::STOCK_ITEM);
 
+	m_widgetStack.addWidget(stockWidget, name);
+
 	m_dataStockWidgets.emplace(std::make_pair(name, std::forward_as_tuple(stock, stockWidget)));
-
 	configureStockWidgetProperties(name);
-
-	previousWidget = stockWidget;  
 }
 
 void StockWidgetList::removeStockWidget(const std::string& name)
 {
 	const auto& [stockData, stockWidget] = m_dataStockWidgets.at(name);	
 	
-	m_container->remove(stockWidget);
+	m_widgetStack.removeWidget(stockWidget);
 	m_dataStockWidgets.erase(name);
 }
 
 void StockWidgetList::clearList()
 {
-	m_container->removeAllWidgets();
+	m_widgetStack.removeAllWidgets();
 	m_dataStockWidgets.clear();
 }
 
 void StockWidgetList::reloadStockWidgets()
 {
-	for (const auto& [stockName, stockWidgetPair] : m_dataStockWidgets)
-	{
-		const auto& [stockData, stockWidget] = stockWidgetPair;
-		m_container->add(stockWidget);
-	}
+	m_widgetStack.reloadWidgets();
 }
 
 void StockWidgetList::updateStockWidgets()
