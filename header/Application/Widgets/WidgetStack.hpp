@@ -8,7 +8,7 @@ public:
 	WidgetStack(tgui::Container::Ptr container);
 	WidgetStack(const WidgetStack& copy) = delete;
 
-	void addWidget(tgui::Widget::Ptr widget);
+	void addWidget(tgui::Widget::Ptr widget, const tgui::String& name);
 	void removeWidget(tgui::Widget::Ptr widget);
 	void removeAllWidgets();
 

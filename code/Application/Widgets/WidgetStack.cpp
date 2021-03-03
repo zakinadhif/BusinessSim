@@ -6,9 +6,9 @@ WidgetStack::WidgetStack(tgui::Container::Ptr container)
 
 }
 
-void WidgetStack::addWidget(tgui::Widget::Ptr widget)
+void WidgetStack::addWidget(tgui::Widget::Ptr widget, const tgui::String& name)
 {
-	m_container->add(widget);
+	m_container->add(widget, name);
 
 	if (m_widgets.empty())
 	{
