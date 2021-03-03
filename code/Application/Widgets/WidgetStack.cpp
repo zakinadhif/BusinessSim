@@ -12,6 +12,7 @@ void WidgetStack::addWidget(tgui::Widget::Ptr widget, const tgui::String& name)
 
 	if (m_widgets.empty())
 	{
+		widget->setPosition(0, 0);
 		m_widgets.push_back(widget);
 	}
 	else 
@@ -27,6 +28,12 @@ void WidgetStack::removeWidget(tgui::Widget::Ptr widget)
 {
 	m_container->remove(widget);
 	reorderWidgets();
+}
+
+void WidgetStack::removeAllWidgets()
+{
+	m_widgets.clear();
+	m_container->removeAllWidgets();
 }
 
 void WidgetStack::reloadWidgets()
