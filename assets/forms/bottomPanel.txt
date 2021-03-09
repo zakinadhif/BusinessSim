@@ -38,7 +38,7 @@ Panel.bottomPanel {
                 TextColorDisabled = #7D7D7D;
                 TextColorDown = black;
                 TextColorHover = black;
-                Texture = "assets/Candle-Stick-Chart-slim.png" NoSmooth;
+                Texture = "../Candle-Stick-Chart-slim.png" NoSmooth;
                 TextureDisabled = None;
                 TextureDown = None;
                 TextureFocused = None;
@@ -72,7 +72,7 @@ Panel.bottomPanel {
                 TextColorDisabled = #7D7D7D;
                 TextColorDown = black;
                 TextColorHover = black;
-                Texture = "assets/Crates-Thin-Outline-slim.png" NoSmooth;
+                Texture = "../Crates-Thin-Outline-slim.png" NoSmooth;
                 TextureDisabled = None;
                 TextureDown = None;
                 TextureFocused = None;
@@ -106,7 +106,7 @@ Panel.bottomPanel {
                 TextColorDisabled = #7D7D7D;
                 TextColorDown = black;
                 TextColorHover = black;
-                Texture = "assets/Member-Circle-No-Outline-slim.png" NoSmooth;
+                Texture = "../Member-Circle-No-Outline-slim.png" NoSmooth;
                 TextureDisabled = None;
                 TextureDown = None;
                 TextureFocused = None;
