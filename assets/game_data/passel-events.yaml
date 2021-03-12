@@ -1,0 +1,5 @@
+# Passel Events
+# format: [id, headline, market_volatility, market_drive, max_change, type, chance]
+- [0, "Passel ship crew members held hostage in naica archipelago.", 0.1, -0.5, 5, ONCE, 10]
+- [1, "Online shipment increases by 25% because of Covid19 lockdown.", 0.2, 0.3, 3, ONCE, 50]
+- [2,"
