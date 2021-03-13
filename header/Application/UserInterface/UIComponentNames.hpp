@@ -1,8 +1,5 @@
 #pragma once
 
-#include <string>
-#include <string_view>
-
 namespace UIComponentNames
 {
 	constexpr char GOTO_TRADING_MENU_BUTTON[] = "tradingButton";
