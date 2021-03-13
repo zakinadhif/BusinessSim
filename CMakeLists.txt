@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.18.4)
 
 project(BusinessStrategy)
 
-add_subdirectory(tests)
-
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS code/*.cpp)
 
 add_executable("${PROJECT_NAME}" ${SOURCES})
