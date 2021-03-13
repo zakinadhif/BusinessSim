@@ -18,6 +18,9 @@ public:
 	void updateStockWidgetList();
 
 private:
+	void loadFormFiles();
+	void loadPages();
+
 	tgui::Group::Ptr m_UIContainer;
 
 	tgui::Group::Ptr m_pageContainer;

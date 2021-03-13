@@ -17,40 +17,61 @@ UserInterface::UserInterface(tgui::Group::Ptr container)
 	, m_pageManager{m_pageContainer}
 	, m_stockWidgetList{m_stockWidgetContainer}
 {
-	m_UIContainer->loadWidgetsFromFile("assets/forms/topPanel.txt", false);
-	m_UIContainer->loadWidgetsFromFile("assets/forms/bottomPanel.txt", false);
+	namespace Components = UIComponentNames;
 
+	loadFormFiles();
+	loadPages();
+	
+	m_pageManager.setActivePage("Empty Page");
+
+	// Configure m_pageContainer placement.
 	m_pageContainer->setPosition("0", "topPanel.bottom");
 	m_pageContainer->setSize("100%", "bottomPanel.top - topPanel.bottom");
 	m_UIContainer->add(m_pageContainer, "pageContainer");
+
+	// Wires up bottom panel's buttons.
+	auto tradingButton = m_UIContainer->get<tgui::Button>(Components::GOTO_TRADING_MENU_BUTTON);
+	auto socialButton = m_UIContainer->get<tgui::Button>(Components::GOTO_SOCIAL_MENU_BUTTON);
+	auto commoditiesButton = m_UIContainer->get<tgui::Button>(Components::GOTO_COMMODITIES_MENU_BUTTON);
 	
-	auto reloadPageButton = tgui::Button::create("R");
-	reloadPageButton->setPosition("50% - width / 2", "0");
-	reloadPageButton->onPress(
-		[this]()
-		{
-			m_pageManager.reloadPages();
-			m_stockWidgetList.reloadStockWidgets();
-		});
-	m_UIContainer->add(reloadPageButton, "reloadPageButton");
+	tradingButton->onClick(
+		[this]() {
+			m_pageManager.setActivePage("Trading Menu"); 
+		}
+	);
 
-	m_pageManager.addPage(UIFormPaths::EMPTY_PAGE, "Empty Page");
-	m_pageManager.addPage(UIFormPaths::TRADE_MENU, "Trading Menu");
-	m_pageManager.addPage(UIFormPaths::SOCIAL_MENU, "Social Menu");
-	m_pageManager.addPage(UIFormPaths::COMMODITIES_MENU, "Commodities Menu");
-	m_pageManager.setActivePage("Empty Page");
+	socialButton->onClick(
+		[this]() {
+			m_pageManager.setActivePage("Social Menu");
+		}
+	);
 
-	auto tradingButton = m_UIContainer->get(UIComponentNames::GOTO_TRADING_MENU_BUTTON);
-	if (tradingButton) tradingButton->getSignal("Pressed").connect([this](){m_pageManager.setActivePage("Trading Menu");});
-
-	auto socialButton = m_UIContainer->get(UIComponentNames::GOTO_SOCIAL_MENU_BUTTON);
-	if (socialButton) socialButton->getSignal("Pressed").connect([this](){m_pageManager.setActivePage("Social Menu");});
-
-	auto commoditiesButton = m_UIContainer->get(UIComponentNames::GOTO_COMMODITIES_MENU_BUTTON);
-	if (commoditiesButton) commoditiesButton->getSignal("Pressed").connect([this](){m_pageManager.setActivePage("Commodities Menu");});
+	commoditiesButton->onClick(
+		[this]() {
+			m_pageManager.setActivePage("Commodities Menu");
+		}
+	);
 
 	auto tradingPage = m_pageManager.getPage("Trading Menu");
 	tradingPage->add(m_stockWidgetContainer);
+}
+
+void UserInterface::loadFormFiles()
+{
+	namespace FormPaths = UIFormPaths;
+
+	m_UIContainer->loadWidgetsFromFile(FormPaths::TOP_PANEL, false);
+	m_UIContainer->loadWidgetsFromFile(FormPaths::BOTTOM_PANEL, false);
+}
+
+void UserInterface::loadPages()
+{
+	namespace FormPaths = UIFormPaths;
+	
+	m_pageManager.addPage(FormPaths::EMPTY_PAGE, "Empty Page");
+	m_pageManager.addPage(FormPaths::TRADE_MENU, "Trading Menu");
+	m_pageManager.addPage(FormPaths::SOCIAL_MENU, "Social Menu");
+	m_pageManager.addPage(FormPaths::COMMODITIES_MENU, "Commodities Menu");
 }
 
 tgui::Group::Ptr UserInterface::getUIContainer()
