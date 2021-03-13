@@ -2,6 +2,7 @@
 
 #include "Application/PlayerStats.hpp"
 #include "Application/Market/PriceSimulator.hpp"
+#include "Application/Controllers/PlayerStatsController.hpp"
 
 #include <TGUI/TGUI.hpp>
 
@@ -21,13 +22,11 @@ private:
 	void initUILogics();
 	void initStocks();
 
-	std::size_t gameStepCount = 0;
-
-	PlayerStats playerStats;
-	UserInterface& ui;
+	UserInterface& m_ui;
 
 	PriceSimulator abacaStock;
 	PriceSimulator oilStock;
 
-	std::size_t playerStatsUICallbacksID = 0;
+	PlayerStats m_playerStats;
+	PlayerStatsController m_playerStatsController;
 };

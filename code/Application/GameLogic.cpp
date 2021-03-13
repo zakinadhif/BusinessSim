@@ -9,7 +9,8 @@
 #include <spdlog/spdlog.h>
 
 GameLogic::GameLogic(UserInterface& ui)
-	: ui(ui) 
+	: m_ui(ui)
+	, m_playerStatsController(m_playerStats, m_ui)
 {
 	spdlog::info("GameLogic: created with {} as ui.", static_cast<void*>(&ui));
 	init();
@@ -34,44 +35,25 @@ void GameLogic::initStocks()
 
 void GameLogic::initUILogics()
 {
-	using namespace UIComponentNames;
+	namespace Components = UIComponentNames;
 
-	playerStatsUICallbacksID = playerStats.addListener(
-		[this](const PlayerStats& playerStats)
-		{
-			auto uiContainer = ui.getUIContainer();
-			
-			tgui::Label::Ptr moneyDisplay = uiContainer->get<tgui::Label>(MONEY_LABEL);
-			moneyDisplay->setText(fmt::to_string(playerStats.getMoney()));
-			
-			tgui::Label::Ptr ticketDisplay = uiContainer->get<tgui::Label>(TICKET_LABEL);
-			ticketDisplay->setText(fmt::to_string(playerStats.getTicket()));
-		}
-	);
-
-	auto uiContainer = ui.getUIContainer();
+	auto uiContainer = m_ui.getUIContainer();
 	
-	tgui::Button::Ptr stepGameButton = uiContainer->get<tgui::Button>(STEP_BUTTON);
+	tgui::Button::Ptr stepGameButton = uiContainer->get<tgui::Button>(Components::STEP_BUTTON);
 	stepGameButton->onPress([this](){ stepGame(); });
 
-	spdlog::info("GameLogic: initialization complete.");
-
-	ui.addStockWidget(abacaStock, "Abaca Inc");	
-	ui.addStockWidget(oilStock, "Oil");
+	m_ui.addStockWidget(abacaStock, "Abaca Inc");	
+	m_ui.addStockWidget(oilStock, "Oil");
 }
 
 void GameLogic::stepGame()
 {
-	++gameStepCount;
-	spdlog::info("GameLogic: gameStepCount: {}", gameStepCount);
-
 	abacaStock.step();
 	oilStock.step();
-	ui.updateStockWidgetList();
+	m_ui.updateStockWidgetList();
 }
 
 GameLogic::~GameLogic()
 {
 	spdlog::info("GameLogic: destroyed.");
-	playerStats.removeListener(playerStatsUICallbacksID);
 }
