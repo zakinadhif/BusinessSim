@@ -1,7 +1,6 @@
 #include "Application/Market/PriceSimulator.hpp"
-#include "Application/Market/PriceQuote.hpp"
 
-#include <random>
+#include "Application/Utility/Random.hpp"
 
 #include <cmath>
 
@@ -51,8 +50,8 @@ float PriceSimulator::getVolatility() const
 
 float PriceSimulator::boxMullerRandom()
 {
-	float u1 = random.getRandomNumber();
-	float u2 = random.getRandomNumber();
+	float u1 = Random::getFloat();
+	float u2 = Random::getFloat();
 
 	float z;
 	z = std::sqrt(-2.f * std::log(u1));
@@ -64,12 +63,4 @@ float PriceSimulator::boxMullerRandom()
 	}
 
 	return boxMullerRandom();
-}
-
-float PriceSimulator::stdRandom()
-{
-	static std::normal_distribution<float> normalDist;
-	std::mt19937& randomEngine = random.getRandomEngine();
-
-	return normalDist(randomEngine);
 }

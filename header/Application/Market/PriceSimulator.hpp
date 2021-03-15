@@ -1,10 +1,6 @@
 #pragma once
 
 #include "Application/GameSettings.hpp"
-#include "Application/Market/PriceQuote.hpp"
-#include "Application/Utility/Random.hpp"
-
-#include <vector>
 
 class PriceSimulator
 {
@@ -33,8 +29,5 @@ private:
 
 	const int m_tradingPeriod = 0;
 
-	Random random;
-	
 	float boxMullerRandom();
-	float stdRandom();
 };
