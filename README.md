@@ -5,7 +5,7 @@ A for-fun business strategy game.
 To build the source code, one needs to have these installed:
  - CMake
 
-and these libraries need to exist and locatable:
+and these libraries must exist and be locatable:
  - [fmtlib/fmt](https://github.com/fmtlib/fmt)
  - [gabime/spdlog](https://github.com/gabime/spdlog)
  - [jbeder/yaml-cpp](https://github.com/jbeder/yaml-cpp)
