@@ -10,8 +10,6 @@ BusinessStrategy::BusinessStrategy()
 {
 	gameStateManager.push(std::make_unique<MainState>(gameStateManager, gui));
 	window.setFramerateLimit(60);
-	
-	Random::initialize();
 }
 
 void BusinessStrategy::handleEvent(sf::Event event)
