@@ -1,27 +1,26 @@
 #include "Application/Utility/Random.hpp"
 
-#include <cassert>
 #include <random>
 
-bool Random::initialized = false;
-std::mt19937 Random::mersenneTwister; 
-
-void Random::initialize()
+namespace Random
 {
-	assert(!initialized && "Hm, Code smell, RANDOM IS ALREADY INITIALIZED!");
+	static std::uniform_int_distribution<int> uniform_int_dist;
+	static std::uniform_real_distribution<float> uniform_float_distribution;
 
-	mersenneTwister.seed(std::random_device{}());
-	initialized = true;
-}
+	float getFloat()
+	{
+		return uniform_float_distribution(getEngine());
+	}
 
-float Random::getRandomNumber()
-{
-	return uniform_distribution(getRandomEngine());
-}
+	int getInt()
+	{
+		return uniform_int_dist(getEngine());
+	}
 
-std::mt19937& Random::getRandomEngine()
-{
-	assert(initialized && "Random engine hasn't been initialized yet.");
+	std::mt19937& getEngine()
+	{
+		static std::mt19937* mt = new std::mt19937(std::random_device{}());
 
-	return mersenneTwister;
+		return *mt;
+	}
 }
