@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 struct MarketEvent
 {
@@ -8,8 +9,12 @@ struct MarketEvent
 
 	std::string headline;
 
-	int marketVolatility {};
-	int marketDrive {};	
+	float marketVolatility {};
+	float marketDrive {};
+
+	bool onlyOnce = true;
+
+	int chance {};
 };
 
 struct CommodityData
@@ -21,4 +26,7 @@ struct CommodityData
 	
 	std::string logoPath;
 
+	std::vector<MarketEvent> events;
 };
+
+std::vector<CommodityData> loadCommodities();
