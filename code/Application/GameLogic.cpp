@@ -38,11 +38,11 @@ void GameLogic::initUILogics()
 	namespace Components = UIComponentNames;
 
 	auto uiContainer = m_ui.getUIContainer();
-	
+
 	tgui::Button::Ptr stepGameButton = uiContainer->get<tgui::Button>(Components::STEP_BUTTON);
 	stepGameButton->onPress([this](){ stepGame(); });
 
-	m_ui.addStockWidget(abacaStock, "Abaca Inc");	
+	m_ui.addStockWidget(abacaStock, "Abaca Inc");
 	m_ui.addStockWidget(oilStock, "Oil");
 }
 
