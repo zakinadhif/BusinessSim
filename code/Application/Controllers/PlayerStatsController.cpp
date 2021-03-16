@@ -29,5 +29,5 @@ const PlayerStats& PlayerStatsController::get() const
 void PlayerStatsController::updateView()
 {
 	m_moneyLabel->setText(fmt::to_string(m_playerStats.money));	
-	m_moneyLabel->setText(fmt::to_string(m_playerStats.ticket));
+	m_ticketLabel->setText(fmt::to_string(m_playerStats.ticket));
 }
