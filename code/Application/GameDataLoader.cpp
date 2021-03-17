@@ -2,13 +2,22 @@
 
 #include <yaml-cpp/yaml.h>
 
+#include <filesystem>
+
 static const char* commoditiesFilepath = "assets/game_data/commodities.yaml";
+static const char* gameDataPath = "assets/game_data/";
 
 static std::vector<MarketEvent> loadEvents(const std::string& filepath)
 {
+	// Determines relative path from exe's directory
+	namespace fs = std::filesystem;
+	fs::path gameDataPath(::gameDataPath);
+
+	fs::path eventsFilepath = gameDataPath / filepath;
+
 	std::vector<MarketEvent> events;
 
-	YAML::Node root = YAML::LoadFile(filepath);
+	YAML::Node root = YAML::LoadFile(eventsFilepath);
 
 	for (const auto& node : root)
 	{
