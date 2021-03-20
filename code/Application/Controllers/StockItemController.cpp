@@ -1,6 +1,5 @@
 #include "Application/Controllers/StockItemController.hpp"
 
-#include "Application/Market/Commodity.hpp"
 #include "Application/UserInterface/UIComponentNames.hpp"
 
 #include <fmt/format.h>
@@ -19,8 +18,6 @@ StockItemController::StockItemController(Commodity& commodity, tgui::Group::Ptr 
 
 void StockItemController::update()
 {
-	namespace Components = UIComponentNames;
-
 	std::string priceString = fmt::format("{:.2f} E", m_commodity.price);
 
 	m_companyName->setText(m_commodity.name);
