@@ -16,16 +16,6 @@ PlayerStatsController::PlayerStatsController(PlayerStats& playerStats, UserInter
 	m_ticketLabel = uiContainer->get<tgui::Label>(Components::TICKET_LABEL);
 }
 
-PlayerStats& PlayerStatsController::get()
-{
-	return m_playerStats;
-}
-
-const PlayerStats& PlayerStatsController::get() const
-{
-	return m_playerStats;
-}
-
 void PlayerStatsController::updateView()
 {
 	m_moneyLabel->setText(fmt::to_string(m_playerStats.money));	
