@@ -2,7 +2,7 @@
 
 #include <string>
 
-struct MarketItem
+struct Commodity
 {
 	std::string name;
 	float price;
