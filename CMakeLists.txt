@@ -16,7 +16,6 @@ set_target_properties(
 	CXX_STANDARD 17
 	)
 
-find_package(ImGui-SFML REQUIRED)
 find_package(fmt REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(yaml-cpp REQUIRED)
