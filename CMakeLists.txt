@@ -28,6 +28,7 @@ find_package(SFML 2.5 COMPONENTS system window graphics REQUIRED)
 target_include_directories(
 	"${PROJECT_NAME}" PUBLIC
 	"${YAML_CPP_INCLUDE_DIR}"
+	"${THOR_INCLUDE_DIR}"
 	header
 	)
 
@@ -40,10 +41,10 @@ target_link_libraries(
 	"${PROJECT_NAME}"
 	PRIVATE
 	"${YAML_CPP_LIBRARIES}"
+	"${THOR_LIBRARY_RELEASE}"
 	sfml-graphics
 	sfml-window
 	sfml-system
-	thor
 	tgui
 	fmt::fmt
 	spdlog::spdlog
