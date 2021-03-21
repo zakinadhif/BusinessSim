@@ -1,0 +1,216 @@
+Renderer.1 {
+    BackgroundColor = transparent;
+    BorderColor = #3C3C3C;
+    Borders = (0, 0, 0, 0);
+    TextColor = #3C3C3C;
+    TextureBackground = None;
+}
+
+Panel.stockItem {
+    Size = (100%, 75);
+
+    Renderer {
+        BackgroundColor = #C9905E;
+        BorderColor = black;
+        TextureBackground = None;
+    }
+
+    Button.sellButton {
+        Position = ((&.width - width) - 8, (&.height - height) - 8);
+        Size = (60, 25);
+        TextSize = 13;
+
+        Renderer {
+            BackgroundColor = #F5F5F5;
+            BackgroundColorDisabled = #E6E6E6;
+            BackgroundColorDown = #EBEBEB;
+            BackgroundColorHover = white;
+            BorderColor = #3C3C3C;
+            BorderColorDisabled = #7D7D7D;
+            BorderColorDown = black;
+            BorderColorFocused = #1E1EB4;
+            BorderColorHover = black;
+            Borders = (0, 0, 0, 0);
+            TextColor = #3C3C3C;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = black;
+            TextColorHover = black;
+            Texture = "../Sell Button.png" Part(0, 0, 32, 13) NoSmooth;
+            TextureDisabled = None;
+            TextureDown = "../Sell Button.png" Part(0, 13, 32, 13) NoSmooth;
+            TextureFocused = None;
+            TextureHover = None;
+        }
+    }
+
+    Button.buyButton {
+        Position = (sellbutton.left, (sellbutton.top - height) - 8);
+        Size = (60, 25);
+        TextSize = 13;
+
+        Renderer {
+            BackgroundColor = #F5F5F5;
+            BackgroundColorDisabled = #E6E6E6;
+            BackgroundColorDown = #EBEBEB;
+            BackgroundColorHover = white;
+            BorderColor = #3C3C3C;
+            BorderColorDisabled = #7D7D7D;
+            BorderColorDown = black;
+            BorderColorFocused = #1E1EB4;
+            BorderColorHover = black;
+            Borders = (0, 0, 0, 0);
+            TextColor = #3C3C3C;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = black;
+            TextColorHover = black;
+            Texture = "../Buy Button.png" Part(0, 0, 32, 13) NoSmooth;
+            TextureDisabled = None;
+            TextureDown = "../Buy Button.png" Part(0, 13, 32, 13) NoSmooth;
+            TextureFocused = None;
+            TextureHover = None;
+        }
+    }
+
+    Label.companyName {
+        AutoSize = true;
+        Position = (8, 8);
+        ScrollbarPolicy = Never;
+        Size = (77.2, 18);
+        Text = "Abaca Co.";
+        TextSize = 13;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = #3C3C3C;
+            Borders = (0, 0, 0, 0);
+            TextColor = #3C3C3C;
+            TextStyle = Bold;
+            TextureBackground = None;
+        }
+    }
+
+    SpinButton.buyCountSpin {
+        Maximum = 9999;
+        Minimum = 0;
+        Position = ((buybutton.left - width) - 8, buybutton.top);
+        Size = (24, (sellbutton.top + sellbutton.height) - buybutton.top);
+        Step = 1;
+        Value = 0;
+
+        Renderer {
+            ArrowColor = #3C3C3C;
+            ArrowColorHover = black;
+            BackgroundColor = #F5F5F5;
+            BackgroundColorHover = white;
+            BorderBetweenArrows = 2;
+            BorderColor = black;
+            Borders = (1, 1, 1, 1);
+            TextureArrowDown = None;
+            TextureArrowDownHover = None;
+            TextureArrowUp = None;
+            TextureArrowUpHover = None;
+        }
+    }
+
+    Panel.buyCountDisplay {
+        Position = (buycountspin.left - width, buycountspin.top);
+        Size = (height * 0.65, buycountspin.height);
+
+        Renderer {
+            BackgroundColor = #F5F5F5;
+            BorderColor = black;
+            Borders = (1, 1, 0, 1);
+            TextureBackground = None;
+        }
+
+        Label.buyCountLabel {
+            AutoSize = true;
+            HorizontalAlignment = Center;
+            Position = ((&.width - width) / 2, (&.height - height) / 2);
+            ScrollbarPolicy = Never;
+            Size = (17.8, 27);
+            Text = 1;
+            TextSize = 20;
+            renderer = &1;
+        }
+    }
+
+    Panel.priceDisplay {
+        Position = (8, companyname.top + companyname.height);
+        Size = ((buycountdisplay.left - 8) - 8, (100% - (companyname.top + companyname.height)) - 8);
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = black;
+            TextureBackground = None;
+        }
+
+        Label.lastPriceLabel {
+            HorizontalAlignment = Center;
+            ScrollbarPolicy = Never;
+            Size = (45, 100%);
+            Text = "10 E";
+            TextSize = 13;
+            VerticalAlignment = Center;
+
+            Renderer {
+                BackgroundColor = #DDDDDD;
+                BorderColor = #3C3C3C;
+                Borders = (1, 1, 1, 1);
+                TextColor = #3C3C3C;
+                TextureBackground = None;
+            }
+        }
+
+        Panel.lastQuoteDisplay {
+            Position = ((lastpricelabel.left + lastpricelabel.width) + 8, 0);
+            Size = ((&.width - lastpricelabel.width) - 8, 100%);
+
+            Renderer {
+                BackgroundColor = #F2F2F2;
+                BorderColor = black;
+                Borders = (1, 1, 1, 1);
+                TextureBackground = None;
+            }
+
+            Label.openPriceLabel {
+                AutoSize = true;
+                ScrollbarPolicy = Never;
+                Size = (31.2, 18);
+                Text = "10 E";
+                TextSize = 13;
+                renderer = &1;
+            }
+
+            Label.closePriceLabel {
+                AutoSize = true;
+                Position = (0, openpricelabel.top + openpricelabel.height);
+                ScrollbarPolicy = Never;
+                Size = (31.2, 18);
+                Text = "10 E";
+                TextSize = 13;
+                renderer = &1;
+            }
+
+            Label.highPriceLabel {
+                AutoSize = true;
+                Position = (openpricelabel.left + openpricelabel.width, 0);
+                ScrollbarPolicy = Never;
+                Size = (31.2, 18);
+                Text = "10 E";
+                TextSize = 13;
+                renderer = &1;
+            }
+
+            Label.lowPriceLabel {
+                AutoSize = true;
+                Position = (closepricelabel.left + closepricelabel.width, closepricelabel.top);
+                ScrollbarPolicy = Never;
+                Size = (31.2, 18);
+                Text = "10 E";
+                TextSize = 13;
+                renderer = &1;
+            }
+        }
+    }
+}
