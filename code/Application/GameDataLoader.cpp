@@ -36,11 +36,11 @@ static std::vector<MarketEvent> loadEvents(const std::string& filepath)
 	return std::move(events);
 }
 
-static CommodityData loadCommodity(YAML::Node node)
+static Commodity loadCommodity(YAML::Node node)
 {
-	CommodityData commodity {
+	Commodity commodity {
 		.shortName = node.as<std::string>(),
-		.name = node["name"].as<std::string>(),
+		.fullName = node["name"].as<std::string>(),
 		.description = node["description"].as<std::string>(),
 		.logoPath = node["logo"].as<std::string>(),
 		.events = loadEvents(node["events"].as<std::string>())
@@ -49,9 +49,9 @@ static CommodityData loadCommodity(YAML::Node node)
 	return std::move(commodity);
 }
 
-std::vector<CommodityData> loadCommodities()
+std::vector<Commodity> loadCommodities()
 {
-	std::vector<CommodityData> commodities;
+	std::vector<Commodity> commodities;
 
 	YAML::Node root = YAML::LoadFile(commoditiesFilepath);
 

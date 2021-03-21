@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Application/Market/CommodityData.hpp"
+#include "Application/Market/Commodity.hpp"
 
 #include <vector>
 
-std::vector<CommodityData> loadCommodities();
+std::vector<Commodity> loadCommodities();
