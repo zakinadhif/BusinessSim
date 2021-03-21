@@ -16,6 +16,9 @@ set_target_properties(
 	CXX_STANDARD 17
 	)
 
+list(APPEND CMAKE_MODULE_PATH "/usr/local/cmake/Modules/")
+
+find_package(Thor 2 REQUIRED)
 find_package(fmt REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(yaml-cpp REQUIRED)
@@ -40,6 +43,7 @@ target_link_libraries(
 	sfml-graphics
 	sfml-window
 	sfml-system
+	thor
 	tgui
 	fmt::fmt
 	spdlog::spdlog
