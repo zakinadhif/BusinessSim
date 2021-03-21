@@ -4,10 +4,12 @@
 
 #include <TGUI/AllWidgets.hpp>
 
+struct CommodityData;
+
 class StockItemController
 {
 public:
-	StockItemController(Commodity& commodity, tgui::Group::Ptr widget);
+	StockItemController(CommodityData& commodityMeta, Commodity& commodity, tgui::Group::Ptr widget);
 
 	void setName(const std::string& name) { m_commodity.name = name; }
 	const std::string& getName() const { return m_commodity.name; }
@@ -18,9 +20,14 @@ public:
 	void update();
 
 private:
+	void initializeAppearance();
+
+	CommodityData& m_commodityData;
 	Commodity& m_commodity;
 	tgui::Group::Ptr m_widget;
 
-	tgui::Label::Ptr m_companyName;
-	tgui::Label::Ptr m_priceTag;
+	tgui::Picture::Ptr m_companyLogo;
+	tgui::Picture::Ptr m_arrowPicture;
+
+	tgui::Label::Ptr m_priceLabel;
 };
