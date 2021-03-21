@@ -13,14 +13,8 @@ namespace UIComponentNames
 	constexpr char STATS_BUTTON[] = "statsButton";
 
 	constexpr char STOCK_ROOT[] = "stockItem";
-	constexpr char STOCK_BUY_COUNT_SPIN[] = "buyCountSpin";
-	constexpr char STOCK_BUY_COUNT_LABEL[] = "buyCountLabel";
-	constexpr char STOCK_COMPANY_NAME[] = "companyName";
-	constexpr char STOCK_LAST_PRICE_LABEL[] = "lastPriceLabel";
-	constexpr char STOCK_OPEN_PRICE_LABEL[] = "openPriceLabel";
-	constexpr char STOCK_CLOSE_PRICE_LABEL[] = "closePriceLabel";
-	constexpr char STOCK_HIGH_PRICE_LABEL[] = "highPriceLabel";
-	constexpr char STOCK_LOW_PRICE_LABEL[] = "lowPriceLabel";
+	constexpr char STOCK_PRICE_LABEL[] = "priceLabel";
+	constexpr char STOCK_ARROW_PICTURE[] = "arrowPicture";
+	constexpr char STOCK_COMPANY_LOGO[] = "companyLogo";
 };
-
 
