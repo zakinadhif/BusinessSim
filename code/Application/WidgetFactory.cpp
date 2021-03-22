@@ -17,7 +17,7 @@ tgui::Panel::Ptr createStockWidget(Commodity& commodity, TextureHolder& textureH
 	auto widget = tgui::Panel::create({"100%", "75"});
 	widget->loadWidgetsFromFile(UIFormPaths::STOCK_ITEM);
 
-	auto companyLogo = widget->get<tgui::Picture>(Components::STOCK_COMPANY_LOGO);
+	auto companyLogoPicture = widget->get<tgui::Picture>(Components::STOCK_COMPANY_LOGO);
 	auto priceLabel = widget->get<tgui::Label>(Components::STOCK_PRICE_LABEL);
 	auto arrowPicture = widget->get<tgui::Picture>(Components::STOCK_ARROW_PICTURE);
 
@@ -25,7 +25,7 @@ tgui::Panel::Ptr createStockWidget(Commodity& commodity, TextureHolder& textureH
 	auto& companyLogoTexture = textureHolder[commodity.shortName];
 	auto& noArrowStableTexture = textureHolder[ResourceIDs::NO_ARROW_STABLE];
 
-	companyLogo->getRenderer()->setTexture(companyLogoTexture);
+	companyLogoPicture->getRenderer()->setTexture(companyLogoTexture);
 	arrowPicture->getRenderer()->setTexture(noArrowStableTexture);
 
 	priceLabel->setText(fmt::format("{:.2f} E", commodity.price));
