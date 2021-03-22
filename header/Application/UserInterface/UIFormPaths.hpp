@@ -2,14 +2,14 @@
 
 namespace UIFormPaths
 {
-	constexpr char EMPTY_PAGE[] = "assets/forms/emptyPage.txt";
-	constexpr char PLAYER_STATS_PAGE[] = "assets/forms/emptyPage.txt";
-	constexpr char TRADE_MENU[] = "assets/forms/tradingMenu.txt";
-	constexpr char SOCIAL_MENU[] = "assets/forms/socialPage.txt";
-	constexpr char COMMODITIES_MENU[] = "assets/forms/commoditiesPage.txt";
+	const char* EMPTY_PAGE = "assets/forms/emptyPage.txt";
+	const char* PLAYER_STATS_PAGE = "assets/forms/emptyPage.txt";
+	const char* TRADE_MENU = "assets/forms/tradingMenu.txt";
+	const char* SOCIAL_MENU = "assets/forms/socialPage.txt";
+	const char* COMMODITIES_MENU = "assets/forms/commoditiesPage.txt";
 
-	constexpr char TOP_PANEL[] = "assets/forms/topPanel.txt";
-	constexpr char BOTTOM_PANEL[] = "assets/forms/bottomPanel.txt";
+	const char* TOP_PANEL = "assets/forms/topPanel.txt";
+	const char* BOTTOM_PANEL = "assets/forms/bottomPanel.txt";
 
-	constexpr char STOCK_ITEM[] = "assets/components/stockItem.txt";
+	const char* STOCK_ITEM = "assets/components/stockItem.txt";
 };
