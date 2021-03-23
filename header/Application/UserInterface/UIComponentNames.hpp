@@ -14,7 +14,9 @@ namespace UIComponentNames
 
 	const char* STOCK_ROOT = "stockItem";
 	const char* STOCK_PRICE_LABEL = "priceLabel";
-	const char* STOCK_ARROW_PICTURE = "arrowPicture";
+	const char* STOCK_ARROW_UP_PICTURE = "arrowUpPicture";
+	const char* STOCK_ARROW_DOWN_PICTURE = "arrowDownPicture";
+	const char* STOCK_ARROW_NONE_PICTURE = "stripPicture";
 	const char* STOCK_COMPANY_LOGO = "companyLogo";
 };
 
