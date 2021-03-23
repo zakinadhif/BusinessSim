@@ -4,15 +4,13 @@
 
 #include <TGUI/AllWidgets.hpp>
 
-struct CommodityData;
-
 class StockItemController
 {
 public:
-	StockItemController(CommodityData& commodityMeta, Commodity& commodity, tgui::Group::Ptr widget);
+	StockItemController(Commodity& commodity, tgui::Group::Ptr widget);
 
-	void setName(const std::string& name) { m_commodity.name = name; }
-	const std::string& getName() const { return m_commodity.name; }
+	const std::string& getName() const { return m_commodity.shortName; }
+	const std::string& getFullName() const { return m_commodity.fullName; }	
 
 	void setPrice(float price) { m_commodity.price = price; }
 	float getPrice() const { return m_commodity.price; }
@@ -20,14 +18,17 @@ public:
 	void update();
 
 private:
-	void initializeAppearance();
-
-	CommodityData& m_commodityData;
 	Commodity& m_commodity;
 	tgui::Group::Ptr m_widget;
 
-	tgui::Picture::Ptr m_companyLogo;
-	tgui::Picture::Ptr m_arrowPicture;
+	tgui::Picture::Ptr m_companyLogoPicture;
+
+	tgui::Picture::Ptr m_arrowUpPicture;
+	tgui::Picture::Ptr m_arrowDownPicture;
+	tgui::Picture::Ptr m_arrowNonePicture;
 
 	tgui::Label::Ptr m_priceLabel;
+
+	// For tracking price direction change;
+	float m_previousPrice {};
 };
