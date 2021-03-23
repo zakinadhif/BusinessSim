@@ -33,12 +33,35 @@ Panel.stockItem {
             }
         }
 
-        Picture.arrowPicture {
+        Picture.arrowUpPicture {
             Position = (&.width - width, 9);
             Size = (40, 40);
 
             Renderer {
                 Texture = "../Green-Arrow-Up.png" Smooth;
+                TransparentTexture = false;
+            }
+        }
+
+        Picture.stripPicture {
+            Position = (arrowPicture.left, 9);
+            Size = (40, 40);
+            Visible = false;
+
+            Renderer {
+                Opacity = 0.8;
+                Texture = "../No-Arrow-Stable.png" Smooth;
+                TransparentTexture = false;
+            }
+        }
+
+        Picture.arrowDownPicture {
+            Position = (arrowUpPicture.left, 9);
+            Size = (40, 40);
+            Visible = false;
+
+            Renderer {
+                Texture = "../Red-Arrow-Down.png" Smooth;
                 TransparentTexture = false;
             }
         }
