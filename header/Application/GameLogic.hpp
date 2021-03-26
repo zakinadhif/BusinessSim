@@ -24,4 +24,7 @@ private:
 
 	PlayerStats m_playerStats;
 	PlayerStatsController m_playerStatsController;
+
+	std::vector<Commodity> m_commodities;
+	std::vector<StockItemController> m_stockItemControllers;
 };
