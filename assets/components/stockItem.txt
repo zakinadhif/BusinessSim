@@ -68,14 +68,14 @@ Panel.stockItem {
     }
 
     Group.logoGroup {
-        Position = (8, 8);
+        Position = (16, 12);
         Renderer = &1;
-        Size = (200, &.height - 16);
+        Size = (200, &.height - 24);
 
         Picture.companyLogo {
             IgnoreMouseEvents = true;
-            Position = (8, 4.55737);
-            Size = (152, 52.3279);
+            Position = (0, 4.55737);
+            Size = (132, 45.4426);
 
             Renderer {
                 Texture = "../logos/Passel Logo.png" Part(4, 11, 122, 42) Smooth;
