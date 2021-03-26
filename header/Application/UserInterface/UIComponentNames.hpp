@@ -18,5 +18,6 @@ namespace UIComponentNames
 	inline const char* STOCK_ARROW_DOWN_PICTURE = "arrowDownPicture";
 	inline const char* STOCK_ARROW_NONE_PICTURE = "stripPicture";
 	inline const char* STOCK_COMPANY_LOGO = "companyLogo";
+	inline const char* STOCK_COMPANY_LOGO_FRAME = "logoGroup";
 };
 
