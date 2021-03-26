@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Application/Controllers/StockItemController.hpp"
+#include "Application/Market/Commodity.hpp"
 #include "Application/PlayerStats.hpp"
 #include "Application/Market/PriceSimulator.hpp"
 #include "Application/Controllers/PlayerStatsController.hpp"
@@ -18,14 +20,7 @@ public:
 	~GameLogic();
 
 private:
-	void init();
-	void initUILogics();
-	void initStocks();
-
 	UserInterface& m_ui;
-
-	PriceSimulator abacaStock;
-	PriceSimulator oilStock;
 
 	PlayerStats m_playerStats;
 	PlayerStatsController m_playerStatsController;
