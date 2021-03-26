@@ -4,15 +4,14 @@
 
 #include <filesystem>
 
+namespace fs = std::filesystem;
+
 static const char* commoditiesFilepath = "assets/game_data/commodities.yaml";
-static const char* gameDataPath = "assets/game_data/";
+static const auto gameDataPath = fs::path("assets/game_data/");
+static const auto logosPath = fs::path("assets/logos/");
 
 static std::vector<MarketEvent> loadEvents(const std::string& filepath)
 {
-	// Determines relative path from exe's directory
-	namespace fs = std::filesystem;
-	fs::path gameDataPath(::gameDataPath);
-
 	fs::path eventsFilepath = gameDataPath / filepath;
 
 	std::vector<MarketEvent> events;
@@ -40,10 +39,10 @@ static std::vector<MarketEvent> loadEvents(const std::string& filepath)
 static Commodity loadCommodity(YAML::Node node)
 {
 	Commodity commodity {
-		.shortName = node.as<std::string>(),
-		.fullName = node["name"].as<std::string>(),
+		.shortName = node["shortName"].as<std::string>(),
+		.fullName = node["fullName"].as<std::string>(),
 		.description = node["description"].as<std::string>(),
-		.logoPath = node["logo"].as<std::string>(),
+		.logoPath = logosPath / node["logo"].as<std::string>(),
 		.events = loadEvents(node["events"].as<std::string>())
 	};
 
