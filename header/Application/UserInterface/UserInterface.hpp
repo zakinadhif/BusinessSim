@@ -1,11 +1,15 @@
 #pragma once
 
 #include "Application/UserInterface/PageManager.hpp"
-#include "Application/UserInterface/StockWidgetList.hpp"
 
 #include <TGUI/TGUI.hpp>
+#include <Thor/Resources.hpp>
 
 #include <memory>
+
+class StockItemController;
+
+struct Commodity;
 
 class UserInterface
 {
@@ -14,18 +18,18 @@ public:
 
 	tgui::Group::Ptr getUIContainer();
 
-	void addStockWidget(const PriceSimulator& stock, const std::string& name);
-	void updateStockWidgetList();
+	StockItemController addStockWidget(Commodity& commodity);
 
 private:
 	void loadFormFiles();
 	void loadPages();
 
 	tgui::Group::Ptr m_UIContainer;
-
 	tgui::Group::Ptr m_pageContainer;
-	tgui::Group::Ptr m_stockWidgetContainer;
+	
+	tgui::HorizontalLayout::Ptr m_stockWidgetList;
 
 	PageManager m_pageManager;
-	StockWidgetList m_stockWidgetList;
+
+	thor::ResourceHolder<sf::Texture, std::string> m_resources;
 };

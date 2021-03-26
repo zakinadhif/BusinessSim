@@ -1,27 +1,30 @@
 #include "Application/UserInterface/UserInterface.hpp"
-#include "Application/PlayerStats.hpp"
 
-#include "Application/Market/PriceSimulator.hpp"
-#include "Application/UserInterface/StockWidgetList.hpp"
 #include "Application/UserInterface/UIComponentNames.hpp"
 #include "Application/UserInterface/UIFormPaths.hpp"
 
-#include <TGUI/Exception.hpp>
-#include <TGUI/Widgets/Group.hpp>
-#include <TGUI/Widgets/VerticalLayout.hpp>
+#include "Application/Market/PriceSimulator.hpp"
+#include "Application/Market/Commodity.hpp"
+
+#include "Application/PlayerStats.hpp"
+#include "Application/WidgetFactory.hpp"
+
+#include "Application/Controllers/StockItemController.hpp"
+
+#include <TGUI/TGUI.hpp>
+#include <Thor/Resources.hpp>
 
 UserInterface::UserInterface(tgui::Group::Ptr container)
 	: m_UIContainer{container}
 	, m_pageContainer{tgui::Group::create()}
-	, m_stockWidgetContainer{tgui::Group::create()}
+	, m_stockWidgetList{tgui::HorizontalLayout::create()}
 	, m_pageManager{m_pageContainer}
-	, m_stockWidgetList{m_stockWidgetContainer}
 {
 	namespace Components = UIComponentNames;
 
 	loadFormFiles();
 	loadPages();
-	
+
 	m_pageManager.setActivePage("Empty Page");
 
 	// Configure m_pageContainer placement.
@@ -53,7 +56,7 @@ UserInterface::UserInterface(tgui::Group::Ptr container)
 	);
 
 	auto tradingPage = m_pageManager.getPage("Trading Menu");
-	tradingPage->add(m_stockWidgetContainer);
+	tradingPage->add(m_stockWidgetList);
 }
 
 void UserInterface::loadFormFiles()
@@ -74,17 +77,22 @@ void UserInterface::loadPages()
 	m_pageManager.addPage(FormPaths::COMMODITIES_MENU, "Commodities Menu");
 }
 
+StockItemController UserInterface::addStockWidget(Commodity &commodity)
+{
+	// Load widget's resource
+	m_resources.acquire(
+		commodity.shortName, 
+		thor::Resources::fromFile<sf::Texture>(commodity.logoPath)
+	);
+
+	auto stockWidget = createStockWidget(commodity, m_resources);
+
+	m_stockWidgetList->add(stockWidget);
+
+	return StockItemController(commodity, stockWidget);
+}
+
 tgui::Group::Ptr UserInterface::getUIContainer()
 {
 	return m_UIContainer;
-}
-
-void UserInterface::addStockWidget(const PriceSimulator& stock, const std::string& name)
-{
-	m_stockWidgetList.createStockWidget(stock, name);
-}
-
-void UserInterface::updateStockWidgetList()
-{
-	m_stockWidgetList.updateStockWidgets();
 }
