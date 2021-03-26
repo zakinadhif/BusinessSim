@@ -6,6 +6,7 @@ To build the source code, one needs to have these installed:
  - CMake
 
 and these libraries must exist and be locatable:
+ - [Bromeon/Thor](https://github.com/Bromeon/Thor)
  - [fmtlib/fmt](https://github.com/fmtlib/fmt)
  - [gabime/spdlog](https://github.com/gabime/spdlog)
  - [jbeder/yaml-cpp](https://github.com/jbeder/yaml-cpp)
