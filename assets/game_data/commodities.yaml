@@ -1,5 +1,5 @@
-- Passel:
-    name: "Passel Shipment PLC."
-    description: "A shipment company."
-    logo: "Passel.png"
-    events: "passel-events.yaml"
+- shortName: "Passel"
+  fullName: "Passel Shipment PLC."
+  description: "A shipment company."
+  logo: "Passel Logo.png"
+  events: "passel-events.yaml"
