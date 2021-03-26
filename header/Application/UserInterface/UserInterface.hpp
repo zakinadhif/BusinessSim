@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Application/UserInterface/PageManager.hpp"
+#include "Application/Widgets/WidgetStack.hpp"
 
 #include <TGUI/TGUI.hpp>
 #include <Thor/Resources.hpp>
@@ -27,7 +28,9 @@ private:
 	tgui::Group::Ptr m_UIContainer;
 	tgui::Group::Ptr m_pageContainer;
 	
-	tgui::HorizontalLayout::Ptr m_stockWidgetList;
+	tgui::ScrollablePanel::Ptr m_stockWidgetsPanel;
+
+	WidgetStack m_stockWidgetList;
 
 	PageManager m_pageManager;
 

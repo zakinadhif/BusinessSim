@@ -17,7 +17,8 @@
 UserInterface::UserInterface(tgui::Group::Ptr container)
 	: m_UIContainer{container}
 	, m_pageContainer{tgui::Group::create()}
-	, m_stockWidgetList{tgui::HorizontalLayout::create()}
+	, m_stockWidgetsPanel{tgui::ScrollablePanel::create()}
+	, m_stockWidgetList{m_stockWidgetsPanel}
 	, m_pageManager{m_pageContainer}
 {
 	namespace Components = UIComponentNames;
@@ -55,8 +56,10 @@ UserInterface::UserInterface(tgui::Group::Ptr container)
 		}
 	);
 
+	m_stockWidgetsPanel->getRenderer()->setBackgroundColor(sf::Color(0, 0, 0, 0));
+
 	auto tradingPage = m_pageManager.getPage("Trading Menu");
-	tradingPage->add(m_stockWidgetList);
+	tradingPage->get<tgui::Panel>("Panel1")->add(m_stockWidgetsPanel);
 }
 
 void UserInterface::loadFormFiles()
@@ -87,7 +90,7 @@ StockItemController UserInterface::addStockWidget(Commodity &commodity)
 
 	auto stockWidget = createStockWidget(commodity, m_resources);
 
-	m_stockWidgetList->add(stockWidget);
+	m_stockWidgetList.addWidget(stockWidget, commodity.shortName);
 
 	return StockItemController(commodity, stockWidget);
 }
