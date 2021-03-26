@@ -44,7 +44,7 @@ Panel.stockItem {
         }
 
         Picture.stripPicture {
-            Position = (arrowPicture.left, 9);
+            Position = (arrowUpPicture.left, 9);
             Size = (40, 40);
             Visible = false;
 
