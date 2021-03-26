@@ -26,8 +26,9 @@ static std::vector<MarketEvent> loadEvents(const std::string& filepath)
 			.headline = node[1].as<std::string>(),
 			.marketVolatility = node[2].as<float>(),
 			.marketDrive = node[3].as<float>(),
-			.onlyOnce = node[4].as<bool>(),
-			.chance = node[5].as<int>()
+			.maxPriceChange = node[4].as<float>(),
+			.chance = node[5].as<int>(),
+			.onlyOnce = node[6].as<bool>()
 		};
 		
 		events.push_back(event);
