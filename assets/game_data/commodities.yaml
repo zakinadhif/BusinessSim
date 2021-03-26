@@ -3,18 +3,3 @@
     description: "A shipment company."
     logo: "Passel.png"
     events: "passel-events.yaml"
-- Repharma:
-    name: "Repharma"
-    description: "A pharmaceutical company."
-    logo: "Repharma.png"
-    events: "repharma-events.yaml"
-- ICell:
-    name: "I-Cell"
-    description: "Mobile telecommunication company."
-    logo: "ICell.png"
-    events: "icell-events.yaml"
-- GameKube:
-    name: "GameKube"
-    description: "Game development company."
-    logo: "GameKube.png"
-    events: "gamekube-events.yaml"
