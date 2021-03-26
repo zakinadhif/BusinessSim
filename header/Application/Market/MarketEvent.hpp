@@ -10,8 +10,9 @@ struct MarketEvent
 
 	float marketVolatility {};
 	float marketDrive {};
-
-	bool onlyOnce = true;
+	float maxPriceChange {};
 
 	int chance {};
+
+	bool onlyOnce = true;
 };
