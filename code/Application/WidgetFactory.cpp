@@ -38,8 +38,12 @@ tgui::Panel::Ptr createStockWidget(Commodity& commodity, TextureHolder& textureH
 		companyLogoFrameSize.y / companyLogoTextureSize.y
 	);
 
-	companyLogoPicture->setPosition({0,0});
 	companyLogoPicture->setSize(companyLogoTextureSize.x * maxScale, companyLogoTextureSize.y * maxScale);
+
+	// Center the commodity's logo
+	sf::Vector2f companyLogoPictureSize = companyLogoPicture->getSize();
+	
+	companyLogoPicture->setPosition({"0","(&.height - height) / 2"});
 
 	return widget;
 }
