@@ -3,3 +3,8 @@
   description: "A shipment company."
   logo: "Passel Logo.png"
   events: "passel-events.yaml"
+- shortName: "Fuelize"
+  fullName: "Fuelize Petrol Co."
+  description: "A fuel company."
+  logo: "Fuelize Logo.png"
+  events: "passel-events.yaml"
