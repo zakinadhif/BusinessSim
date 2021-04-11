@@ -23,3 +23,6 @@ $ make .
 Make sure you're on the repo's root directory.
 
 The executable "BusinessSim" should appear if the build processes succeeded.
+
+# Project Status
+No work in progress (at the moment).
